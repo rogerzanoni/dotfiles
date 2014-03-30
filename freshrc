@@ -1,0 +1,111 @@
+fresh freshshell/fresh bin/fresh --bin
+
+# git config
+
+fresh-options --file=~/.gitconfig --marker
+    fresh config/git/gitconfig
+fresh-options
+
+fresh-options --file=~/.gitignore --marker
+    fresh config/git/gitignore
+fresh-options
+
+# mutt config
+
+fresh-options --file=~/.muttrc --marker
+    fresh config/mutt/muttrc
+    fresh config/mutt/colors
+    mkdir -p ~/.mutt/cache/headers
+    mkdir -p ~/.mutt/cache/bodies
+fresh-options
+
+fresh-options --file=~/.mailcap --marker
+    fresh config/mutt/mailcap
+fresh-options
+
+# i3 config
+
+fresh-options --file=~/.i3/config --marker
+    fresh config/i3/config
+fresh-options
+
+fresh-options --file=~/.i3/conkyrc --marker
+    fresh config/i3/conkyrc
+fresh-options
+
+fresh scripts/i3/conky-i3bar --bin
+
+# tmux config
+
+fresh-options --file=~/.tmux.conf --marker
+    fresh config/tmux/tmux.conf
+    fresh seebi/tmux-colors-solarized tmuxcolors-256.conf
+fresh-options
+# tmux config
+
+# vim config
+
+fresh-options --file=~/.vimrc --marker=\"
+    fresh config/vim/vimrc
+fresh-options
+
+# x config
+
+fresh-options --file=~/.xinitrc --marker
+    fresh config/x/xinitrc
+fresh-options
+
+fresh-options --file=~/.Xresources --marker=!
+    fresh config/x/Xresources
+fresh-options
+
+# zsh config
+
+fresh-options --file=~/.zshrc --marker
+    fresh config/zsh/zshrc
+    fresh config/zsh/aliases
+fresh-options
+
+fresh-options --file=~/.zshenv --marker
+    fresh config/zsh/zshenv
+fresh-options
+
+fresh-options --file=~/.zprofile --marker
+    fresh config/zsh/zprofile
+fresh-options
+
+# spacemacs
+
+fresh https://github.com/syl20bnr/spacemacs . --file=~/.emacs.d/
+
+fresh-options --file=~/.emacs.d/user-config --marker=\;
+    fresh config/emacs/user-config
+fresh-options
+
+fresh-options --file=~/.spacemacs --marker=\;
+    fresh config/emacs/spacemacs
+fresh-options
+
+# termite
+
+fresh-options --file=~/.config/termite/config --marker
+    fresh config/termite/config
+fresh-options
+
+# offlineimap
+
+fresh-options --file=~/.offlineimaprc --marker
+    fresh config/offlineimap/offlineimaprc
+fresh-options
+
+fresh-options --file=~/.offlineimap.py --marker
+    fresh config/offlineimap/offlineimap.py
+fresh-options
+
+# todo.txt
+fresh ginatrapani/todo.txt-cli todo.sh --bin=~/bin/todo
+fresh duncanje/todo.txt-revive revive --file=~/.todo.d/revive
+
+fresh-options --file=~/.todo/config --marker
+    fresh config/todo/config
+fresh-options

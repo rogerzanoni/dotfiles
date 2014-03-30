@@ -1,0 +1,46 @@
+- defaults:
+    link:
+      relink: true
+      force: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+
+    # emacs
+    ~/.emacs.d: spacemacs
+    ~/.spacemacs: config/emacs/spacemacs
+    ~/.emacs.d/user-config: config/emacs/user-config
+
+    # git
+    ~/.gitconfig: config/git/gitconfig
+    ~/.gitignore: config/git/gitignore
+
+    # i3
+    ~/.i3/config: config/i3/config
+    ~/.i3/conkyrc: config/i3/conkyrc
+    ~/bin/conky-i3bar: scripts/i3/conky-i3bar
+
+    # mutt
+    ~/.muttrc: config/mutt/muttrc
+    ~/.mailcap: config/mutt/mailcap
+
+    # tmux
+    ~/.tmux.conf: config/tmux/tmux.conf
+
+    # vim
+    ~/.vimrc: config/vim/vimrc
+
+    # X
+    ~/.xinitrc: config/x/xinitrc
+    ~/.Xresources: config/x/Xresources
+
+    # zsh
+    ~/.zshrc: config/zsh/zshrc
+    ~/.zshenv: config/zsh/zshenv
+    ~/.zprofile: config/zsh/zprofile
+
+    # offlineimap
+    ~/.offlineimaprc: config/offlineimap/offlineimaprc
+    ~/.offlineimap.py: config/offlineimap/offlineimap.py
