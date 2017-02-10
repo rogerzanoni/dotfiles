@@ -1,3 +1,0 @@
-;; browse-kill-ring config
-(browse-kill-ring-default-keybindings) ;; M-y
-(setq browse-kill-ring-quit-action 'save-and-restore)
