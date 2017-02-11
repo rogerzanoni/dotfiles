@@ -323,6 +323,10 @@ in `dotspacemacs/user-config'."
           (tab-mark 9 [9702 9] [92 9])))
   (global-whitespace-mode t))
 
+(defun byte-recompile-spacemacs ()
+  (interactive)
+  (byte-recompile-directory "~/.emacs.d" 0))
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
