@@ -59,7 +59,9 @@ values."
      ;; syntax-checking
      sql
      themes-megapack
-     version-control
+     (version-control :variables
+                       version-control-global-margin t
+                       version-control-diff-tool 'git-gutter+)
      yaml
      )
    ;; List of additional packages that will be installed without being
@@ -355,6 +357,9 @@ layers configuration. You are free to put any user code."
   (dtrt-indent-mode)
   ;; Stop dtrt-indent from cluttering modeline
   (add-hook 'buffer-list-update-hook (lambda () (setq dtrt-indent-mode-line-info nil)))
+
+  ;; Move git gutter digns to the left fringe
+  (setq git-gutter-fr+-side 'left-fringe)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
