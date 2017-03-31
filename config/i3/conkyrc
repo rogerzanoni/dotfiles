@@ -43,5 +43,5 @@ TEXT
  { "full_text" : "vol ${exec amixer get Master | awk '$0~/%/{print $6=="[off]"?"mute-"$5:$5;exit;}' | tr -d '[]'}", "color" : "\#ffffff" },
  { "full_text" : "battery ${battery_percent BAT0}%", "color" : "\#ffffff" },
  { "full_text" : "remaining ${battery_time BAT0}", "color" : "\#ffffff" },
- { "full_text" : "${time %a %d.%m.%y} ${time %H:%M}", "color" : "\#ffffff" }
+ { "full_text" : "${exec i3-time}", "color" : "\#ffffff" }
 ],

@@ -20,6 +20,7 @@
     ~/.i3/config: config/i3/config
     ~/.i3/conkyrc: config/i3/conkyrc
     ~/bin/conky-i3bar: scripts/i3/conky-i3bar
+    ~/bin/i3-time: scripts/i3/i3-time
 
     # mutt
     ~/.muttrc: config/mutt/muttrc

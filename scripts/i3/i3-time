@@ -1,0 +1,18 @@
+#!/bin/sh
+
+DATEFORMAT="%a %d/%m/%y %R"
+
+if [ -f ~/.timezones ]
+then
+    while read line; do
+        SHORTNAME=$(echo $line | cut -d" " -f1)
+        TZ=$(echo $line | cut -d" " -f2)
+        TIME=$(TZ=$TZ date +"$DATEFORMAT")
+
+        echo -n "$SHORTNAME $TIME | "
+    done <~/.timezones
+    LOCALTIME=$(date +"$DATEFORMAT")
+    echo -n "LOCAL $LOCALTIME"
+else
+    date +"$DATEFORMAT"
+fi
