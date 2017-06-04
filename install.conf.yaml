@@ -5,6 +5,39 @@
 
 - clean: ['~']
 
+- shell:
+    -
+      command: mkdir -f ~/{bin,.i3/}
+      stdout: true
+      stderr: true
+      description: "Creating scripts config directories"
+    -
+      command: git clone https://aur.archlinux.org/packer.git /tmp/packer && cd /tmp/packer && makepkg -si --needed
+      stdout: true
+      stderr: true
+      description: "Installing packer"
+    -
+      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm
+      stdout: true
+      stderr: true
+      description: "Installing base packages (dev, i3)"
+    -
+      command: packer -S --noconfirm --needed --noedit dropbox rofi
+      stdout: true
+      stderr: true
+      description: "Installing aur packages"
+    -
+      command: sudo npm install -g tern
+      stdout: true
+      stderr: true
+      description: "Installing tern spacemacs dependency"
+    -
+      command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      stdout: true
+      stderr: true
+      stdin: true
+      description: "Installing oh-my-zsh"
+
 - link:
     ~/.dotfiles: ''
 
