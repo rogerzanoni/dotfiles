@@ -7,22 +7,23 @@
 
 - shell:
     -
-      command: mkdir -f ~/{bin,.i3/}
+      command: mkdir ~/bin; mkdir ~/.i3
       stdout: true
       stderr: true
       description: "Creating scripts config directories"
-    -
-      command: git clone https://aur.archlinux.org/packer.git /tmp/packer && cd /tmp/packer && makepkg -si --needed
-      stdout: true
-      stderr: true
-      description: "Installing packer"
     -
       command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
     -
-      command: packer -S --noconfirm --needed --noedit dropbox rofi
+      command: git clone https://aur.archlinux.org/packer.git /tmp/packer && cd /tmp/packer && makepkg -si --needed
+      stdout: true
+      stderr: true
+      stdin: true
+      description: "Installing packer"
+    -
+      command: packer -S dropbox rofi gohufont --noconfirm --noedit
       stdout: true
       stderr: true
       description: "Installing aur packages"
