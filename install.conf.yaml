@@ -12,7 +12,7 @@
       stderr: true
       description: "Creating scripts config directories"
     -
-      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm
+      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
