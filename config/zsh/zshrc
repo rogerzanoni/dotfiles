@@ -41,8 +41,3 @@ alias vt='vim --servername VIM --remote-silent-tab '
 alias dbopatch="arc diff --reviewers rodrigo.golive HEAD~1"
 alias apclear="git branch -a | grep arcpatch | xargs git branch -D"
 alias startx='ssh-agent startx'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-cowfortune
