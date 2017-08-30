@@ -48,7 +48,7 @@
     ~/.dotfiles: ''
 
     # emacs
-    ~/.emacs.d: spacemacs
+    ~/.emacs.d: config/newemacs
     ~/.spacemacs: config/emacs/spacemacs
 
     # git
