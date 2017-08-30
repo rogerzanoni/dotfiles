@@ -12,7 +12,7 @@
       stderr: true
       description: "Creating scripts config directories"
     -
-      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux
+      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
@@ -23,7 +23,7 @@
       stdin: true
       description: "Installing packer"
     -
-      command: packer -S dropbox rofi gohufont --noconfirm --noedit
+      command: yaourt -S global dropbox rofi gohufont-powerline ttf-adobe-fonts --noconfirm --noedit
       stdout: true
       stderr: true
       description: "Installing aur packages"
