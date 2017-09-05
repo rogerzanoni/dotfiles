@@ -36,4 +36,7 @@
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 (provide 'editor-settings)
