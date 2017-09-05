@@ -17,12 +17,6 @@
       stderr: true
       description: "Installing base packages (dev, i3)"
     -
-      command: git clone https://aur.archlinux.org/packer.git /tmp/packer && cd /tmp/packer && makepkg -si --needed
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Installing packer"
-    -
       command: yaourt -S global dropbox rofi gohufont-powerline ttf-adobe-fonts --noconfirm --noedit
       stdout: true
       stderr: true
