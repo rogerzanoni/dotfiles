@@ -12,6 +12,7 @@
 
 (setq package-list '(ace-jump-mode
                      ansible
+                     beacon
                      company
                      company-c-headers
                      company-qml
@@ -56,6 +57,7 @@
 (require 'ansible-settings)
 (require 'ace-jump-mode-settings)
 (require 'appearance-settings)
+(require 'beacon-settings)
 (require 'c-settings)
 (require 'cedet-settings)
 (require 'company-settings)
