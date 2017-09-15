@@ -47,4 +47,22 @@
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
+; shift enhancements copied from https://github.com/djoyner/dotfiles/blob/888a1f0d5cdd9a15a0bfe93a96cdd1fc5d7f2d57/emacs/lisp/evil-config.el#L36-L40
+(define-key evil-visual-state-map (kbd ">") 'rz/evil-shift-right-visual)
+(define-key evil-visual-state-map (kbd "<") 'rz/evil-shift-left-visual)
+(define-key evil-visual-state-map [tab] 'rz/evil-shift-right-visual)
+(define-key evil-visual-state-map [S-tab] 'rz/evil-shift-left-visual)
+
+(defun rz/evil-shift-left-visual ()
+  (interactive)
+  (evil-shift-left (region-beginning) (region-end))
+  (evil-normal-state)
+  (evil-visual-restore))
+
+(defun rz/evil-shift-right-visual ()
+  (interactive)
+  (evil-shift-right (region-beginning) (region-end))
+  (evil-normal-state)
+  (evil-visual-restore))
+
 (provide 'evil-settings)
