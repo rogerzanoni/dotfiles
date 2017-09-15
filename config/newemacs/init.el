@@ -41,6 +41,7 @@
                      rainbow-identifiers
                      smart-mode-line
                      smartscan
+                     smart-tab
                      smooth-scrolling
                      use-package
                      which-key
@@ -86,6 +87,7 @@
 (require 'rainbow-identifiers-settings)
 (require 'smart-mode-line-settings)
 (require 'smartscan-settings)
+(require 'smart-tab-settings)
 (require 'smooth-scrolling-settings)
 (require 'whitespace-settings)
 (require 'which-key-settings)

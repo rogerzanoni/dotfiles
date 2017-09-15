@@ -4,11 +4,6 @@
 
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
-(use-package cc-mode
-  :config
-  (define-key c-mode-map  [(tab)] 'company-complete)
-  (define-key c++-mode-map  [(tab)] 'company-complete))
-
 (defun c-kr-style ()
   "C mode"
   (interactive)
