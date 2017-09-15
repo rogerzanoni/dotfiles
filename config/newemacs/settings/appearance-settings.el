@@ -3,8 +3,10 @@
 
 (global-hl-line-mode +1)
 
-(use-package cyberpunk-theme
+(use-package moe-theme
   :config
-  (load-theme 'cyberpunk t))
+  (setq moe-theme-highlight-buffer-id t)
+  (moe-theme-set-color 'cyan)
+  (load-theme 'moe-dark t))
 
 (provide 'appearance-settings)

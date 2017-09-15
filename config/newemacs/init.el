@@ -33,6 +33,7 @@
                      hl-todo
                      ivy
                      js2-mode
+                     moe-theme
                      paren
                      projectile
                      pkgbuild-mode
