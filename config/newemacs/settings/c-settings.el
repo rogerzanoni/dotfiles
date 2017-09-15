@@ -8,7 +8,7 @@
   "C mode"
   (interactive)
   (c-set-style "K&R")
-  (setq-default indent-tabs-mode t)
+  (setq-local indent-tabs-mode t)
   (setq c-syntactic-indentation nil)
   (setq tab-width 4)
   (setq c-basic-offset 4))
@@ -17,7 +17,7 @@
   "C kernel mode"
   (interactive)
   (c-set-style "linux")
-  (setq-default indent-tabs-mode t)
+  (setq-local indent-tabs-mode t)
   (setq c-syntactic-indentation nil)
   (setq tab-width 8)
   (setq c-basic-offset 8))
@@ -26,7 +26,7 @@
   "Cpp mode"
   (interactive)
   (c-set-style "stroustrup")
-  (setq-default indent-tabs-mode nil)
+  (setq-local indent-tabs-mode nil)
   (setq c-syntactic-indentation nil)
   (setq tab-width 4)
   (setq c-basic-offset 4))
