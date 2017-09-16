@@ -1,6 +1,8 @@
 (use-package helm
   :config
-  (helm-mode 1))
+  (helm-mode 1)
+  :bind
+  (("M-x" . helm-M-x)))
 
 (use-package helm-ls-git
   :config

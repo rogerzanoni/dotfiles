@@ -4,9 +4,7 @@
     :config
     (evil-leader/set-key
       "ca" 'counsel-ag
-      "cg" 'counsel-git))
-  :bind
-  (("M-x" . counsel-M-x)))
+      "cg" 'counsel-git)))
 
 (use-package counsel-projectile
   :config
