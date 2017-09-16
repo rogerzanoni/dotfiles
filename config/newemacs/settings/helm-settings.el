@@ -1,5 +1,6 @@
 (use-package helm
   :config
+  (setq helm-split-window-default-side 'below)
   (helm-mode 1)
   :bind
   (("M-x" . helm-M-x)))
