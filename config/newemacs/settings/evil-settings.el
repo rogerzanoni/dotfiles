@@ -24,13 +24,15 @@
 
 (use-package evil-leader
   :config
+  (setq evil-leader/in-all-states t)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "h" 'rz/vsplit-last-buffer
     "v" 'rz/hsplit-last-buffer
     "q" 'ff-find-other-file
     "a" 'mark-whole-buffer)
-  (global-evil-leader-mode t))
+  (global-evil-leader-mode t)
+  (kill-buffer "*Messages*")) ; https://github.com/cofi/evil-leader/issues/10
 
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd ";") 'evil-ex)
