@@ -17,7 +17,6 @@
                      company-c-headers
                      company-qml
                      counsel
-                     counsel-projectile
                      cmake-mode
                      cyberpunk-theme
                      dtrt-indent
@@ -28,10 +27,11 @@
                      ggtags
                      git-gutter-fringe+
                      helm
+                     helm-ag
                      helm-gtags
                      helm-ls-git
+                     helm-projectile
                      hl-todo
-                     ivy
                      js2-mode
                      moe-theme
                      paren
@@ -64,7 +64,6 @@
 (require 'cedet-settings)
 (require 'company-settings)
 (require 'company-qml-settings)
-(require 'counsel-settings)
 (require 'cmake-settings)
 (require 'dtrt-indent-settings)
 (require 'editor-settings)
@@ -76,8 +75,8 @@
 (require 'git-gutter-fringe+-settings)
 (require 'helm-settings)
 (require 'helm-gtags-settings)
+(require 'helm-projectile-settings)
 (require 'hl-todo-settings)
-(require 'ivy-settings)
 (require 'js2-mode-settings)
 (require 'key-settings)
 (require 'paren-settings)
