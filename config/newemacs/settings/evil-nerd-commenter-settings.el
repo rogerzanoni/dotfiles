@@ -8,4 +8,10 @@
     "cp" 'evilnc-comment-or-uncomment-paragraphs
     "cr" 'comment-or-uncomment-region))
 
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            ;; Preferred comment style
+            (setq comment-start "// "
+                  comment-end "")))
+
 (provide 'evil-nerd-commenter-settings)
