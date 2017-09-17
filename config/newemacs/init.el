@@ -33,6 +33,7 @@
                      helm-projectile
                      hl-todo
                      js2-mode
+                     lua-mode
                      moe-theme
                      paren
                      projectile
@@ -79,6 +80,7 @@
 (require 'hl-todo-settings)
 (require 'js2-mode-settings)
 (require 'key-settings)
+(require 'lua-mode-settings)
 (require 'paren-settings)
 (require 'pkgbuild-mode-settings)
 (require 'projectile-settings)
