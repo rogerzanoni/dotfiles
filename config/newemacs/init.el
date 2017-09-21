@@ -39,6 +39,7 @@
                      projectile
                      pkgbuild-mode
                      qml-mode
+                     perspeen
                      rainbow-delimiters
                      rainbow-identifiers
                      smart-mode-line
@@ -85,6 +86,7 @@
 (require 'pkgbuild-mode-settings)
 (require 'projectile-settings)
 (require 'qml-mode-settings)
+(require 'perspeen-settings)
 (require 'rainbow-delimiters-settings)
 (require 'rainbow-identifiers-settings)
 (require 'smart-mode-line-settings)
