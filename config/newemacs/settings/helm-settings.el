@@ -10,6 +10,7 @@
   (progn
     (use-package evil-leader
       :config
+      (setq recentf-max-menu-items 1000)
       (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
       (evil-leader/set-key
         "ff" 'helm-find-files
