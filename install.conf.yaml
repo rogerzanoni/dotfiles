@@ -77,3 +77,6 @@
     # offlineimap
     ~/.offlineimaprc: config/offlineimap/offlineimaprc
     ~/.offlineimap.py: config/offlineimap/offlineimap.py
+
+    # dunst
+    ~/.config/dunst/dunstrc: config/dunstrc
