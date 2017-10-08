@@ -29,6 +29,12 @@ plugins=(git svn archlinux screen)
 
 source $ZSH/oh-my-zsh.sh
 
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+
+bindkey '\ex' fzf-cd-widget
+
+
 export EDITOR='vim'
 
 alias ec='emacsclient -t -a "" -c'
