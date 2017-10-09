@@ -28,6 +28,7 @@
                      git-gutter-fringe+
                      helm
                      helm-ag
+                     helm-dash
                      helm-gtags
                      helm-ls-git
                      helm-projectile
@@ -76,6 +77,7 @@
 (require 'ggtags-settings)
 (require 'git-gutter-fringe+-settings)
 (require 'helm-settings)
+(require 'helm-dash-settings)
 (require 'helm-gtags-settings)
 (require 'helm-projectile-settings)
 (require 'hl-todo-settings)
