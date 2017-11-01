@@ -34,6 +34,7 @@
                      hl-todo
                      js2-mode
                      lua-mode
+                     magit
                      moe-theme
                      paren
                      projectile
