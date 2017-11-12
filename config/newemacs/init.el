@@ -36,6 +36,7 @@
                      lua-mode
                      magit
                      moe-theme
+                     ng2-mode
                      paren
                      projectile
                      pkgbuild-mode
@@ -47,6 +48,7 @@
                      smartscan
                      smart-tab
                      smooth-scrolling
+                     typescript-mode
                      use-package
                      which-key
                      whitespace
@@ -83,6 +85,7 @@
 (require 'js2-mode-settings)
 (require 'key-settings)
 (require 'lua-mode-settings)
+(require 'ng2-mode-settings)
 (require 'paren-settings)
 (require 'pkgbuild-mode-settings)
 (require 'projectile-settings)
