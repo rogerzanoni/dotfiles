@@ -19,6 +19,7 @@
                      cmake-mode
                      cyberpunk-theme
                      dtrt-indent
+                     editorconfig
                      elpy
                      evil
                      evil-leader
@@ -71,6 +72,7 @@
 (require 'cmake-settings)
 (require 'dtrt-indent-settings)
 (require 'editor-settings)
+(require 'editorconfig-settings)
 (require 'elpy-settings)
 (require 'evil-settings)
 (require 'evil-nerd-commenter-settings)
