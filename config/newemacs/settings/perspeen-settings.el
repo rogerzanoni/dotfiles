@@ -4,7 +4,7 @@
   (global-set-key (kbd "M-c") 'perspeen-create-ws)
   (global-set-key (kbd "M-d") 'perspeen-delete-ws)
   (global-set-key (kbd "M-<right>") 'perspeen-next-ws)
-  (global-set-key (kbd "M-<left>") 'perspeen-next-ws)
+  (global-set-key (kbd "M-<left>") 'perspeen-previous-ws)
   (global-set-key (kbd "M-1") (lambda () (interactive) (perspeen-goto-ws 1)))
   (global-set-key (kbd "M-2") (lambda () (interactive) (perspeen-goto-ws 2)))
   (global-set-key (kbd "M-3") (lambda () (interactive) (perspeen-goto-ws 3)))
