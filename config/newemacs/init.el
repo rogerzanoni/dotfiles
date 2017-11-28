@@ -25,6 +25,8 @@
                      evil
                      evil-leader
                      evil-nerd-commenter
+                     flycheck
+                     flycheck-pos-tip
                      ggtags
                      git-gutter-fringe+
                      helm
@@ -79,6 +81,7 @@
 (require 'elpy-settings)
 (require 'evil-settings)
 (require 'evil-nerd-commenter-settings)
+(require 'flycheck-settings)
 (require 'gdb-settings)
 (require 'ggtags-settings)
 (require 'git-gutter-fringe+-settings)
