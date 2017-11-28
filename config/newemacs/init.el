@@ -27,6 +27,7 @@
                      evil-leader
                      evil-nerd-commenter
                      flycheck
+                     flycheck-irony
                      flycheck-pos-tip
                      ggtags
                      git-gutter-fringe+
