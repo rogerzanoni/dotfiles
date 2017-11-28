@@ -51,6 +51,7 @@
                      smooth-scrolling
                      typescript-mode
                      use-package
+                     web-mode
                      which-key
                      whitespace
                      yaml-mode
@@ -99,6 +100,7 @@
 (require 'smartscan-settings)
 (require 'smart-tab-settings)
 (require 'smooth-scrolling-settings)
+(require 'web-mode-settings)
 (require 'whitespace-settings)
 (require 'which-key-settings)
 (require 'yaml-mode-settings)
