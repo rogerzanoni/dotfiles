@@ -15,6 +15,7 @@
                      company
                      company-c-headers
                      company-qml
+                     company-quickhelp
                      counsel
                      cmake-mode
                      cyberpunk-theme
@@ -70,6 +71,7 @@
 (require 'cedet-settings)
 (require 'company-settings)
 (require 'company-qml-settings)
+(require 'company-quickhelp-settings)
 (require 'cmake-settings)
 (require 'dtrt-indent-settings)
 (require 'editor-settings)
