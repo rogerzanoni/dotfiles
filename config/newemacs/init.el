@@ -14,6 +14,7 @@
                      ansible
                      company
                      company-c-headers
+                     company-irony
                      company-qml
                      company-quickhelp
                      counsel
@@ -36,6 +37,7 @@
                      helm-ls-git
                      helm-projectile
                      hl-todo
+                     irony
                      js2-mode
                      lua-mode
                      magit
@@ -90,6 +92,7 @@
 (require 'helm-gtags-settings)
 (require 'helm-projectile-settings)
 (require 'hl-todo-settings)
+(require 'irony-settings)
 (require 'js2-mode-settings)
 (require 'key-settings)
 (require 'lua-mode-settings)

@@ -9,6 +9,8 @@
   (setq company-dabbrev-downcase nil)
   (setq company-dabbrev-code-everywhere t)
   (setq company-dabbrev-code-ignore-case t)
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony))
   (delete 'company-semantic company-backends))
 
 (provide 'company-settings)
