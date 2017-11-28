@@ -6,6 +6,9 @@
   (setq company-minimum-prefix-length 2)
   (setq company-selection-wrap-around t)
   (setq company-tooltip-align-annotations t)
+  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-code-everywhere t)
+  (setq company-dabbrev-code-ignore-case t)
   (delete 'company-semantic company-backends))
 
 (provide 'company-settings)
