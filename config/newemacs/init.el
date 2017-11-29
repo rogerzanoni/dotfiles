@@ -13,7 +13,7 @@
 (setq package-list '(ace-jump-mode
                      ansible
                      company
-                     company-c-headers
+                     company-irony-c-headers
                      company-irony
                      company-qml
                      company-quickhelp
