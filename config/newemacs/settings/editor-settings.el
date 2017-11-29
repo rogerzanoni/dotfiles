@@ -46,4 +46,10 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+(defun eldoc-display-message (format-string &rest args)
+  "Display eldoc message near point."
+  (when format-string
+    (pos-tip-show (apply 'format format-string args))))
+(setq eldoc-message-function #'eldoc-display-message)
+
 (provide 'editor-settings)
