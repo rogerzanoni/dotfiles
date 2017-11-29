@@ -39,6 +39,7 @@
                      helm-projectile
                      hl-todo
                      irony
+                     irony-eldoc
                      js2-mode
                      lua-mode
                      magit
