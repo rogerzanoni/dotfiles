@@ -44,6 +44,7 @@
     # emacs
     ~/.emacs.d: config/newemacs
     ~/.spacemacs: config/emacs/spacemacs
+    ~/.emacs_zsh: config/zsh/emacs_zsh
 
     # git
     ~/.gitconfig: config/git/gitconfig

@@ -55,6 +55,7 @@
                      smartscan
                      smart-tab
                      smooth-scrolling
+                     tide
                      typescript-mode
                      use-package
                      web-mode
@@ -109,6 +110,7 @@
 (require 'smartscan-settings)
 (require 'smart-tab-settings)
 (require 'smooth-scrolling-settings)
+(require 'tide-settings)
 (require 'web-mode-settings)
 (require 'whitespace-settings)
 (require 'which-key-settings)
