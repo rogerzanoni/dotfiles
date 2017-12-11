@@ -16,7 +16,6 @@
                      company-irony-c-headers
                      company-irony
                      company-qml
-                     company-quickhelp
                      counsel
                      cmake-mode
                      cyberpunk-theme
@@ -26,9 +25,6 @@
                      evil
                      evil-leader
                      evil-nerd-commenter
-                     flycheck
-                     flycheck-irony
-                     flycheck-pos-tip
                      ggtags
                      git-gutter-fringe+
                      helm
@@ -78,7 +74,6 @@
 (require 'cedet-settings)
 (require 'company-settings)
 (require 'company-qml-settings)
-(require 'company-quickhelp-settings)
 (require 'cmake-settings)
 (require 'dtrt-indent-settings)
 (require 'editor-settings)
@@ -86,7 +81,6 @@
 (require 'elpy-settings)
 (require 'evil-settings)
 (require 'evil-nerd-commenter-settings)
-(require 'flycheck-settings)
 (require 'gdb-settings)
 (require 'ggtags-settings)
 (require 'git-gutter-fringe+-settings)
