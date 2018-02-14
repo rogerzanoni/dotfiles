@@ -17,7 +17,7 @@
       stderr: true
       description: "Installing base packages (dev, i3)"
     -
-      command: yaourt -S global dropbox rofi gohufont-powerline ttf-adobe-fonts --noconfirm --noedit
+      command: yaourt -S global dropbox rofi gohufont-powerline ttf-adobe-fonts light --noconfirm --noedit
       stdout: true
       stderr: true
       description: "Installing aur packages"
