@@ -125,8 +125,8 @@ bindsym $mod+Shift+plus exec amixer -q set Master toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%-
 bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec light -p -A 5; exec light -O
+bindsym XF86MonBrightnessDown exec light -p -U 5; exec light -O
 
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
@@ -158,3 +158,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id dropbox start -i
 exec --no-startup-id feh --bg-max --randomize --no-fehbg ~/.wallpapers/*
+exec light -I
