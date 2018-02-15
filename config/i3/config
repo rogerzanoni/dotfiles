@@ -14,11 +14,21 @@ set $mod Mod4
 #default layout
 workspace_layout tabbed
 
+# border style
+new_window pixel 1
+new_float pixel 1
+
+# hide borders
+hide_edge_borders none
+
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# show / hide status bar
+bindsym $mod+m bar mode toggle
 
 # start a terminal
 bindsym $mod+Return exec xterm
@@ -117,7 +127,7 @@ bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+bindsym $mod+Shift+E exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+equal exec --no-startup-id amixer -q set Master 5%+
 bindsym $mod+minus exec --no-startup-id amixer -q set Master 5%-
@@ -141,7 +151,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-        status_command conky-i3bar
+    mode hide
+    status_command conky-i3bar
 }
 
 # window control
