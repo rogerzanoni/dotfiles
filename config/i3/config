@@ -151,7 +151,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    mode hide
     status_command conky-i3bar
 }
 
