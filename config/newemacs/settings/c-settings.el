@@ -1,4 +1,4 @@
-(use-package company-c-headers
+(use-package company-irony-c-headers
   :config
   (require 'company-irony-c-headers)
   (eval-after-load 'company
