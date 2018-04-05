@@ -10,7 +10,7 @@
   (interactive "p")
   (split-window-vertically)
   (other-window 1 nil)
-  (balance-windows)
+;  (balance-windows)
   (unless prefix
     (switch-to-next-buffer)))
 
@@ -19,7 +19,7 @@
   (interactive "p")
   (split-window-horizontally)
   (other-window 1 nil)
-  (balance-windows)
+;  (balance-windows)
   (unless prefix (switch-to-next-buffer)))
 
 (use-package evil-leader
