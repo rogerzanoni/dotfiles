@@ -29,8 +29,9 @@ plugins=(git svn archlinux screen)
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+# TODO, use separate cfg files for home and work pcs
+#source /usr/share/fzf/completion.zsh
+#source /usr/share/fzf/key-bindings.zsh
 
 bindkey '\ex' fzf-cd-widget
 
@@ -48,4 +49,5 @@ alias dbopatch="arc diff --reviewers rodrigo.golive HEAD~1"
 alias apclear="git branch -a | grep arcpatch | xargs git branch -D"
 alias startx='ssh-agent startx'
 
-eval "$(rbenv init -)"
+# TODO, use separate cfg files for home and work pcs
+#eval "$(rbenv init -)"
