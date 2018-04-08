@@ -7,10 +7,8 @@
    helm-gtags-pulse-at-cursor t
    helm-gtags-suggested-key-mapping t)
   (evil-leader/set-key
-    "tf" 'helm-gtags-find-tag
-    "tr" 'helm-gtags-find-rtag
-    "tr" 'helm-gtags-find-tag-from-here
-    "ts" 'helm-gtags-find-symbol
+    "tc" 'helm-gtags-create-tags
+    "tf" 'helm-gtags-tags-in-this-function
     "td" 'helm-gtags-dwim)
   (add-hook 'dired-mode-hook 'helm-gtags-mode)
   (add-hook 'c-mode-common-hook
