@@ -56,6 +56,7 @@
                      which-key
                      whitespace
                      yaml-mode
+                     zoom-window
                      zygospore))
 
 (dolist (package package-list)
@@ -106,6 +107,7 @@
 (require 'whitespace-settings)
 (require 'which-key-settings)
 (require 'yaml-mode-settings)
+(require 'zoom-window-settings)
 (require 'zygospore-settings)
 
 (custom-set-variables
