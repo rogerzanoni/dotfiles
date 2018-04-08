@@ -13,8 +13,7 @@
 (setq package-list '(ace-jump-mode
                      ansible
                      company
-                     company-irony-c-headers
-                     company-irony
+                     company-c-headers
                      company-qml
                      counsel
                      cmake-mode
@@ -34,8 +33,6 @@
                      helm-ls-git
                      helm-projectile
                      hl-todo
-                     irony
-                     irony-eldoc
                      js2-mode
                      lua-mode
                      magit
@@ -89,7 +86,6 @@
 (require 'helm-gtags-settings)
 (require 'helm-projectile-settings)
 (require 'hl-todo-settings)
-(require 'irony-settings)
 (require 'js2-mode-settings)
 (require 'key-settings)
 (require 'lua-mode-settings)

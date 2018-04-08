@@ -1,9 +1,8 @@
-(use-package company-irony-c-headers
+(use-package company-c-headers
   :config
-  (require 'company-irony-c-headers)
   (eval-after-load 'company
     '(add-to-list
-      'company-backends '(company-irony-c-headers company-irony))))
+      'company-backends '(company-c-headers))))
 
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
