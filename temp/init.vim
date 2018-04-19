@@ -7,7 +7,7 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.cache/dein')
  call dein#begin('~/.cache/dein')
 
- call dein#add('~/.cache/dein')
+ call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
  " Autocomplete
  call dein#add('Shougo/deoplete.nvim')
@@ -32,10 +32,11 @@ if dein#load_state('~/.cache/dein')
  " Show vcs changes on buffer
  call dein#add('airblade/vim-gitgutter')
 
- if !has('nvim')
-   call dein#add('roxma/nvim-yarp')
-   call dein#add('roxma/vim-hug-neovim-rpc')
- endif
+ " Easy motion
+ call dein#add('easymotion/vim-easymotion')
+
+ " YouCompleteMe
+ call dein#add('Valloric/YouCompleteMe')
 
  call dein#end()
  call dein#save_state()
@@ -111,6 +112,21 @@ set hidden
 " Show line numbers on the side
 set number
 
+" Number of undo levels
+set undolevels=1000
+
+" Set 7 lines to the cursor - when moving vertically using j/k
+set so=7
+
+" Height of the command bar
+set cmdheight=2
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
 " GitGutter setup
 let g:gitgutter_enabled = 1
 nmap ]h <Plug>GitGutterNextHunk
@@ -121,3 +137,61 @@ let g:gitgutter_sign_removed = '←'
 let g:gitgutter_sign_removed_first_line = '↽'
 let g:gitgutter_sign_modified_removed = '⇷'
 
+" Keybindingsss
+let mapleader = "\<space>"
+
+" Use the clipboard for all operations
+set clipboard+=unnamedplus
+
+" Open fzf files on the current window
+let g:fzf_layout = { 'window': 'enew' }
+
+" Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" Quick access to commands
+nnoremap ; :
+
+" fast movement through splits
+map <up> <c-w>k
+map <down> <c-w>j
+map <left> <c-w>h
+map <right> <c-w>l
+
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" Horizontal split
+nmap <leader>h <C-w>s
+
+" Vertical split
+nmap <leader>v <C-w>v
+
+" Close window
+nmap <leader>c <C-w>c
+
+" Close all except the current window
+nmap <leader>o <C-w>o
+
+" Ag file search
+nmap <leader>s :Ag<space>
+
+" Ag buffer search
+nmap <leader>sb :AgBuffer<space>
+
+" FZF file find in current working directory
+nmap <leader>f :Files<cr>
+
+" FZF buffer search
+nmap <leader>b :Buffers<cr>
+
+" FZF history search
+nmap <leader>r :History<cr>
+
+" FZF tag search
+nmap <leader>t :Tags<cr>
