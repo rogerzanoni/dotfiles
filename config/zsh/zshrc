@@ -51,3 +51,5 @@ alias startx='ssh-agent startx'
 
 # TODO, use separate cfg files for home and work pcs
 #eval "$(rbenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
