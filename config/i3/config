@@ -31,9 +31,9 @@ floating_modifier $mod
 bindsym $mod+m bar mode toggle
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec alacritty
 # start file manager
-bindsym $mod+Shift+Return exec xterm -e ranger
+bindsym $mod+Shift+Return exec alacritty -e ranger
 
 # kill focused window
 bindsym $mod+Shift+Q kill
