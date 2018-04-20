@@ -35,8 +35,11 @@ if dein#load_state('~/.cache/dein')
  " Easy motion
  call dein#add('easymotion/vim-easymotion')
 
- " YouCompleteMe
- call dein#add('Valloric/YouCompleteMe')
+ " File tree
+ call dein#add('scrooloose/nerdtree')
+
+ " Tagbar
+ call dein#add('majutsushi/tagbar')
 
  call dein#end()
  call dein#save_state()
@@ -118,14 +121,14 @@ set undolevels=1000
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Height of the command bar
-set cmdheight=2
-
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
 set incsearch
+
+" Enable mouse
+set mouse=a
 
 " GitGutter setup
 let g:gitgutter_enabled = 1
@@ -195,3 +198,9 @@ nmap <leader>r :History<cr>
 
 " FZF tag search
 nmap <leader>t :Tags<cr>
+
+" Open file tree
+nmap <leader>n :NERDTreeToggle<cr>
+
+" Open tagbar
+nmap <leader>tt :TagbarToggle<cr>
