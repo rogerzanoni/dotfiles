@@ -41,6 +41,18 @@ if dein#load_state('~/.cache/dein')
  " Tagbar
  call dein#add('majutsushi/tagbar')
 
+ " NERDCommenter
+ call dein#add('scrooloose/nerdcommenter')
+
+ " Highlight trailing whitespaces
+ call dein#add('ntpeters/vim-better-whitespace')
+
+ " Rainbow parentheses
+ call dein#add('kien/rainbow_parentheses.vim')
+
+ " Stop the paste madness
+ call dein#add('roxma/vim-paste-easy')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -52,7 +64,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 colorscheme gruvbox
 set background=dark
- 
+
 " Airline setup
 let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
@@ -151,6 +163,15 @@ let g:fzf_layout = { 'window': 'enew' }
 
 " Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
+
+" Enable better withespace
+let g:better_whitespace_enabled=1
+
+" Rainbow parentheses always on
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " Quick access to commands
 nnoremap ; :
