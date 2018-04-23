@@ -53,6 +53,9 @@ if dein#load_state('~/.cache/dein')
  " Stop the paste madness
  call dein#add('roxma/vim-paste-easy')
 
+ " Switch between header and source files
+ call dein#add('derekwyatt/vim-fswitch')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -225,3 +228,6 @@ nmap <leader>n :NERDTreeToggle<cr>
 
 " Open tagbar
 nmap <leader>tt :TagbarToggle<cr>
+
+" Switch header/source
+nmap <leader>q :FSHere<cr>
