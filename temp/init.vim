@@ -185,14 +185,6 @@ map <down> <c-w>j
 map <left> <c-w>h
 map <right> <c-w>l
 
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-
 " Horizontal split
 nmap <leader>h <C-w>s
 
