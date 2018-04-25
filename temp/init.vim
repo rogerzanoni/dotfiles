@@ -227,3 +227,6 @@ nmap <leader>q :FSHere<cr>
 " Sane line movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+" Clear search highlights
+nmap <silent> <leader>/ :nohlsearch<CR>
