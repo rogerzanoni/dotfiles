@@ -223,3 +223,7 @@ nmap <leader>tt :TagbarToggle<cr>
 
 " Switch header/source
 nmap <leader>q :FSHere<cr>
+
+" Sane line movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
