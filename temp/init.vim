@@ -16,7 +16,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('sheerun/vim-polyglot')
 
  " Theme
- call dein#add('morhetz/gruvbox')
+ call dein#add('KeitaNakamura/neodark.vim')
 
  " Airline
  call dein#add('vim-airline/vim-airline')
@@ -65,11 +65,11 @@ syntax enable
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-colorscheme gruvbox
+colorscheme neodark
 set background=dark
 
 " Airline setup
-let g:airline_theme='gruvbox'
+let g:airline_theme='neodark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
