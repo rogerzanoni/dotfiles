@@ -56,6 +56,9 @@ if dein#load_state('~/.cache/dein')
  " Switch between header and source files
  call dein#add('derekwyatt/vim-fswitch')
 
+ " Narrow region like emacs
+ call dein#add('chrisbra/NrrwRgn')
+
  call dein#end()
  call dein#save_state()
 endif
