@@ -48,7 +48,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('ntpeters/vim-better-whitespace')
 
  " Rainbow parentheses
- call dein#add('kien/rainbow_parentheses.vim')
+ call dein#add('luochen1990/rainbow')
 
  " Stop the paste madness
  call dein#add('roxma/vim-paste-easy')
@@ -170,11 +170,8 @@ let g:fzf_buffers_jump = 1
 " Enable better withespace
 let g:better_whitespace_enabled=1
 
-" Rainbow parentheses always on
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" Rainbow always on
+let g:rainbow_active = 1
 
 " Quick access to commands
 nnoremap ; :
