@@ -47,7 +47,6 @@
     ~/.emacs_zsh: config/zsh/emacs_zsh
 
     # git
-    ~/.gitconfig: config/git/gitconfig
     ~/.gitignore: config/git/gitignore
 
     # i3
