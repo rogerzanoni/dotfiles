@@ -16,7 +16,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('sheerun/vim-polyglot')
 
  " Theme
- call dein#add('KeitaNakamura/neodark.vim')
+ call dein#add('joshdick/onedark.vim')
 
  " Airline
  call dein#add('vim-airline/vim-airline')
@@ -68,11 +68,11 @@ syntax enable
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-colorscheme neodark
+colorscheme onedark
 set background=dark
 
 " Airline setup
-let g:airline_theme='neodark'
+let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
