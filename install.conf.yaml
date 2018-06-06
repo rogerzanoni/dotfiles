@@ -64,6 +64,7 @@
 
     # vim
     ~/.vimrc: config/vim/vimrc
+    ~/.config/nvim/init.vim: config/nvim/init.vim
 
     # X
     ~/.xinitrc: config/x/xinitrc

@@ -29,24 +29,16 @@ plugins=(git svn archlinux screen)
 
 source $ZSH/oh-my-zsh.sh
 
-# TODO, use separate cfg files for home and work pcs
-#source /usr/share/fzf/completion.zsh
-#source /usr/share/fzf/key-bindings.zsh
-
 bindkey '\ex' fzf-cd-widget
 
-
-export EDITOR='vim'
+export EDITOR='nvim'
 
 alias ec='emacsclient -t -a "" -c'
 alias et='emacs -nw'
 alias ek='emacs -nw --eval "(kill-emacs)"'
 alias t='tig'
 alias to='todo'
-alias v='vim --servername VIM --remote-silent '
-alias vt='vim --servername VIM --remote-silent-tab '
-alias dbopatch="arc diff --reviewers rodrigo.golive HEAD~1"
-alias apclear="git branch -a | grep arcpatch | xargs git branch -D"
+alias v='nvim --servername VIM --remote-silent '
 alias startx='ssh-agent startx'
 
 # TODO, use separate cfg files for home and work pcs
