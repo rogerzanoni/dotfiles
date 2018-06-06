@@ -38,7 +38,7 @@ alias et='emacs -nw'
 alias ek='emacs -nw --eval "(kill-emacs)"'
 alias t='tig'
 alias to='todo'
-alias v='nvim --servername VIM --remote-silent '
+alias nv='nvim'
 alias startx='ssh-agent startx'
 
 # TODO, use separate cfg files for home and work pcs
