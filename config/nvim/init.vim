@@ -60,6 +60,9 @@ if dein#load_state('~/.cache/dein')
  " Narrow region like emacs
  call dein#add('chrisbra/NrrwRgn')
 
+ " git
+ call dein#add('tpope/vim-fugitive')
+
  call dein#end()
  call dein#save_state()
 endif
