@@ -41,7 +41,6 @@ alias to='todo'
 alias nv='nvim'
 alias startx='ssh-agent startx'
 
-# TODO, use separate cfg files for home and work pcs
-#eval "$(rbenv init -)"
+source .zshrc_extra
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

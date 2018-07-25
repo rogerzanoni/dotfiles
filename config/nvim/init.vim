@@ -11,6 +11,7 @@ if dein#load_state('~/.cache/dein')
 
  " Autocomplete
  call dein#add('Shougo/deoplete.nvim')
+ call dein#add('zchee/deoplete-clang')
 
  " Language support
  call dein#add('sheerun/vim-polyglot')
@@ -22,8 +23,8 @@ if dein#load_state('~/.cache/dein')
  call dein#add('vim-airline/vim-airline')
  call dein#add('vim-airline/vim-airline-themes')
 
- " fzf and vim plugin 
- call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+ " fzf and vim plugin
+ call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
  " Silver searcher
@@ -157,6 +158,13 @@ let g:gitgutter_sign_modified = '⇄'
 let g:gitgutter_sign_removed = '←'
 let g:gitgutter_sign_removed_first_line = '↽'
 let g:gitgutter_sign_modified_removed = '⇷'
+
+" deoplete setup
+
+let g:deoplete#sources#clang#libclang_path = $NVIM_LIBCLANG_PATH
+let g:deoplete#sources#clang#clang_header = $NVIM_LIBCLANG_HEADER_PATH
+let g:deoplete#enable_at_startup = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Keybindingsss
 let mapleader = "\<space>"
