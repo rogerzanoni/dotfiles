@@ -241,3 +241,7 @@ nnoremap k gk
 
 " Clear search highlights
 nmap <silent> <leader>/ :nohlsearch<CR>
+
+" Keep visual selection after shifting
+vmap < <gv
+vmap > >gv
