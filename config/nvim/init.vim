@@ -152,6 +152,9 @@ set incsearch
 " Enable mouse
 set mouse=a
 
+" Don't show weird completion window at the top
+set completeopt=menu
+
 " GitGutter setup
 let g:gitgutter_enabled = 1
 nmap ]h <Plug>GitGutterNextHunk
