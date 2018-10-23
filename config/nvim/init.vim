@@ -61,6 +61,9 @@ if dein#load_state('~/.cache/dein')
  " Narrow region like emacs
  call dein#add('chrisbra/NrrwRgn')
 
+ " Fancy startup screen
+ call dein#add('mhinz/vim-startify')
+
  " git
  call dein#add('tpope/vim-fugitive')
 
