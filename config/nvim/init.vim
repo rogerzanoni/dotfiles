@@ -67,6 +67,9 @@ if dein#load_state('~/.cache/dein')
  " git
  call dein#add('tpope/vim-fugitive')
 
+ " Rust support
+ call dein#add('rust-lang/rust.vim')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -193,6 +196,9 @@ let g:better_whitespace_enabled=1
 
 " Rainbow always on
 let g:rainbow_active = 1
+
+" use rustfmt automatically on save
+let g:rustfmt_autosave = 1
 
 " Quick access to commands
 nnoremap ; :
