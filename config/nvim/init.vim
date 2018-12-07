@@ -28,8 +28,8 @@ if dein#load_state('~/.cache/dein')
  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
- " Silver searcher
- call dein#add('numkil/ag.nvim')
+ " Ack
+ call dein#add('mileszs/ack.vim')
 
  " Show vcs changes on buffer
  call dein#add('airblade/vim-gitgutter')
@@ -200,6 +200,11 @@ let g:rainbow_active = 1
 " use rustfmt automatically on save
 let g:rustfmt_autosave = 1
 
+" make Ack plugin use ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Quick access to commands
 nnoremap ; :
 
@@ -221,11 +226,8 @@ nmap <leader>c <C-w>c
 " Close all except the current window
 nmap <leader>o <C-w>o
 
-" Ag file search
-nmap <leader>s :Ag<space>
-
-" Ag buffer search
-nmap <leader>sb :AgBuffer<space>
+" Ack file search
+nmap <leader>s :Ack<space>
 
 " FZF file find in current working directory
 nmap <leader>f :Files<cr>
