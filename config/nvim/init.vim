@@ -205,6 +205,10 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" don't automatically jump to first result
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
 " Quick access to commands
 nnoremap ; :
 
