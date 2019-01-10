@@ -67,6 +67,9 @@ if dein#load_state('~/.cache/dein')
  " Rust support
  call dein#add('rust-lang/rust.vim')
 
+ " Underline word (and matching words) under cursor
+ call dein#add('itchyny/vim-cursorword')
+
  call dein#end()
  call dein#save_state()
 endif
