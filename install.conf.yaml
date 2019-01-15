@@ -8,12 +8,18 @@
 - shell:
     -
       command: mkdir ~/bin; mkdir ~/.i3
+    -
+      command: sudo pacman -Sy curl
       stdout: true
       stderr: true
-      description: "Adding archlinuxfr to pacman.conf to install yaourt"
-      command: ./install-yaourt
+      description: "Installing curl (to be able to get yaourt)"
     -
-      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags yaourt
+      command: ./install-yaourt
+      stdout: true
+      stderr: true
+      description: "Adding install yaourt from aur"
+    -
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags yaourt
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
