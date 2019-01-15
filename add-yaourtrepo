@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || sudo cat >> /etc/pacman.conf << EOL
+grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || cat >> /etc/pacman.conf << EOL
 [archlinuxfr]
 SigLevel = Never
 Server = http://repo.archlinux.fr/$arch
