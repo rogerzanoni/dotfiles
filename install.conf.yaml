@@ -11,11 +11,7 @@
       stdout: true
       stderr: true
       description: "Adding archlinuxfr to pacman.conf to install yaourt"
-      command: sh -c "grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || cat >> /etc/pacman.conf << EOL
-      [archlinuxfr]
-      SigLevel = Never
-      Server = http://repo.archlinux.fr/$arch
-      EOL"
+      command: sh ./add-yaourtrepo
     -
       command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags yaourt
       stdout: true
