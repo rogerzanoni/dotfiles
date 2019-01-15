@@ -28,18 +28,12 @@
       stderr: true
       stdin: true
       description: "Installing oh-my-zsh"
-    - command: vim -c VundleUpdate -c quitall
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Install vundle packages"
 
 - link:
     ~/.dotfiles: ''
 
     # emacs
     ~/.emacs.d: config/newemacs
-    ~/.spacemacs: config/emacs/spacemacs
     ~/.emacs_zsh: config/zsh/emacs_zsh
 
     # git
@@ -51,15 +45,10 @@
     ~/bin/conky-i3bar: scripts/i3/conky-i3bar
     ~/bin/i3-time: scripts/i3/i3-time
 
-    # mutt
-    ~/.muttrc: config/mutt/muttrc
-    ~/.mailcap: config/mutt/mailcap
-
     # tmux
     ~/.tmux.conf: config/tmux/tmux.conf
 
     # vim
-    ~/.vimrc: config/vim/vimrc
     ~/.config/nvim/init.vim: config/nvim/init.vim
 
     # X
@@ -70,10 +59,6 @@
     ~/.zshrc: config/zsh/zshrc
     ~/.zshenv: config/zsh/zshenv
     ~/.zprofile: config/zsh/zprofile
-
-    # offlineimap
-    ~/.offlineimaprc: config/offlineimap/offlineimaprc
-    ~/.offlineimap.py: config/offlineimap/offlineimap.py
 
     # dunst
     ~/.config/dunst/dunstrc: config/dunstrc
