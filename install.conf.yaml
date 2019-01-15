@@ -10,9 +10,14 @@
       command: mkdir ~/bin; mkdir ~/.i3
       stdout: true
       stderr: true
-      description: "Creating scripts config directories"
+      description: "Adding archlinuxfr to pacman.conf to install yaourt"
+      sh -c "grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || cat >> /etc/pacman.conf << EOL
+      [archlinuxfr]
+      SigLevel = Never
+      Server = http://repo.archlinux.fr/$arch
+      EOL"
     -
-      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags
+      command: sudo pacman -Sy --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags yaourt
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
@@ -21,11 +26,6 @@
       stdout: true
       stderr: true
       description: "Installing aur packages"
-    -
-      command: sudo npm install -g tern
-      stdout: true
-      stderr: true
-      description: "Installing tern spacemacs dependency"
     -
       command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
       stdout: true
