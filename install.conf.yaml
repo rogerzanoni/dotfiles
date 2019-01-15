@@ -11,7 +11,7 @@
       stdout: true
       stderr: true
       description: "Adding archlinuxfr to pacman.conf to install yaourt"
-      sh -c "grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || cat >> /etc/pacman.conf << EOL
+      command: sh -c "grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || cat >> /etc/pacman.conf << EOL
       [archlinuxfr]
       SigLevel = Never
       Server = http://repo.archlinux.fr/$arch
