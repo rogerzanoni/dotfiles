@@ -3,5 +3,5 @@
 grep -q -x -F '[archlinuxfr]' /etc/pacman.conf || cat >> /etc/pacman.conf << EOL
 [archlinuxfr]
 SigLevel = Never
-Server = http://repo.archlinux.fr/$arch
+Server = http://repo.archlinux.fr/\$arch
 EOL
