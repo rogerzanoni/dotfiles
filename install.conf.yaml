@@ -9,10 +9,10 @@
     -
       command: mkdir ~/bin; mkdir ~/.i3
     -
-      command: sudo pacman -Sy curl
+      command: sudo pacman -Sy curl pkgconf
       stdout: true
       stderr: true
-      description: "Installing curl (to be able to get yaourt)"
+      description: "Installing curl and pkgconf (to be able to get yaourt)"
     -
       command: ./install-yaourt
       stdout: true
@@ -24,7 +24,7 @@
       stderr: true
       description: "Installing base packages (dev, i3)"
     -
-      command: yaourt -S global dropbox rofi gohufont-powerline ttf-adobe-fonts light --noconfirm --noedit
+      command: yaourt -S global rofi gohufont-powerline ttf-adobe-fonts light --noconfirm --noedit
       stdout: true
       stderr: true
       description: "Installing aur packages"
