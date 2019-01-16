@@ -17,14 +17,14 @@
       command: ./install-yaourt
       stdout: true
       stderr: true
-      description: "Adding install yaourt from aur"
+      description: "Install yaourt from aur"
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags yaourt
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
     -
-      command: yaourt -S global rofi gohufont-powerline ttf-adobe-fonts light --noconfirm --noedit
+      command: yaourt -S global rofi gohufont-powerline ttf-adobe-fonts light --noconfirm
       stdout: true
       stderr: true
       description: "Installing aur packages"
