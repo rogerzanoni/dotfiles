@@ -24,7 +24,7 @@
       stderr: true
       description: "Installing aur packages"
     -
-      command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      command: ./install-ohmyzsh
       stdout: true
       stderr: true
       stdin: true
