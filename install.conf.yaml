@@ -9,7 +9,7 @@
     -
       command: mkdir ~/bin; mkdir ~/.i3
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
