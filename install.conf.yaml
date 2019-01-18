@@ -9,22 +9,17 @@
     -
       command: mkdir ~/bin; mkdir ~/.i3
     -
-      command: sudo pacman -Sy curl pkgconf --noconfirm
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf
       stdout: true
       stderr: true
-      description: "Installing curl and pkgconf (to be able to get yaourt)"
+      description: "Installing base packages (dev, i3)"
     -
       command: ./install-yaourt
       stdout: true
       stderr: true
       description: "Install yaourt from aur"
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags
-      stdout: true
-      stderr: true
-      description: "Installing base packages (dev, i3)"
-    -
-      command: yaourt -S global rofi gohufont-powerline ttf-adobe-fonts light --noconfirm
+      command: yaourt -S global rofi gohufont-powerline light --noconfirm
       stdout: true
       stderr: true
       description: "Installing aur packages"
