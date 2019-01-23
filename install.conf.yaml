@@ -7,7 +7,7 @@
 
 - shell:
     -
-      command: mkdir ~/bin; mkdir ~/.i3
+      command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim
     -
       command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty
       stdout: true
