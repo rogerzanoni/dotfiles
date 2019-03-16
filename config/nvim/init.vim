@@ -70,6 +70,9 @@ if dein#load_state('~/.cache/dein')
  " Underline word (and matching words) under cursor
  call dein#add('itchyny/vim-cursorword')
 
+ " Tag management
+ call dein#add('ludovicchabant/vim-gutentags')
+
  call dein#end()
  call dein#save_state()
 endif
