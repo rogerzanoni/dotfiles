@@ -270,3 +270,7 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 " Keep visual selection after shifting
 vmap < <gv
 vmap > >gv
+
+" Tag jumping mappings
+nnoremap <leader>x <C-]>
+nnoremap <leader>z <C-O>
