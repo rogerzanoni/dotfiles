@@ -203,6 +203,9 @@ let g:rainbow_active = 1
 " use rustfmt automatically on save
 let g:rustfmt_autosave = 1
 
+" Gutentags tag dir
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+
 " make Ack plugin use ag
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
