@@ -78,6 +78,9 @@ if dein#load_state('~/.cache/dein')
  call dein#add('SirVer/ultisnips')
  call dein#add('honza/vim-snippets')
 
+ " Vim commands for some shell commands
+ call dein#add('tpope/vim-eunuch')
+
  call dein#end()
  call dein#save_state()
 endif
