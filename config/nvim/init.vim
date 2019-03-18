@@ -275,3 +275,7 @@ vmap > >gv
 " Tag jumping mappings
 nnoremap <leader>x <C-]>
 nnoremap <leader>z <C-O>
+
+" Quick tab switching
+nnoremap <S-Left> :bp<CR>
+nnoremap <S-Right> :bn<CR>
