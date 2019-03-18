@@ -265,6 +265,16 @@ nmap <leader>l :Lines<cr>
 " FZF lines in current buffer
 nmap <leader>ll :BLines<cr>
 
+" FZF commits
+nmap <leader>cc :Commits<cr>
+
+" FZF buffer commits
+nmap <leader>m :BCommits<cr>
+
+" FZF buffer tags
+" TODO commands for navigating code on rigth window
+nmap <leader>j :BTags<cr>
+
 " Open file tree
 nmap <leader>n :NERDTreeToggle<cr>
 
