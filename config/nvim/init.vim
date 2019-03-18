@@ -252,6 +252,12 @@ nmap <leader>r :History<cr>
 " FZF tag search
 nmap <leader>t :Tags<cr>
 
+" FZF lines in open buffers
+nmap <leader>l :Lines<cr>
+
+" FZF lines in current buffer
+nmap <leader>ll :BLines<cr>
+
 " Open file tree
 nmap <leader>n :NERDTreeToggle<cr>
 
