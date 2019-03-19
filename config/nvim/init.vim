@@ -278,6 +278,9 @@ nmap <leader>m :BCommits<cr>
 " TODO commands for navigating code on rigth window
 nmap <leader>j :BTags<cr>
 
+" FZF helper to find sibling files
+nmap <leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
+
 " Open file tree
 nmap <leader>n :NERDTreeToggle<cr>
 
