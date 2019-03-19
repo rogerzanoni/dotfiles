@@ -269,7 +269,7 @@ nmap <leader>l :Lines<cr>
 nmap <leader>ll :BLines<cr>
 
 " FZF commits
-nmap <leader>cc :Commits<cr>
+nmap <leader>, :Commits<cr>
 
 " FZF buffer commits
 nmap <leader>m :BCommits<cr>
