@@ -68,8 +68,8 @@ if dein#load_state('~/.cache/dein')
  " Rust support
  call dein#add('rust-lang/rust.vim')
 
- " Highlight word (and matching words) under cursor
- call dein#add('RRethy/vim-illuminate')
+ " Underline word (and matching words) under cursor
+ call dein#add('itchyny/vim-cursorword')
 
  " Tag management
  call dein#add('ludovicchabant/vim-gutentags')
