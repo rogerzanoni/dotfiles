@@ -19,11 +19,15 @@ if dein#load_state('~/.cache/dein')
  " Theme
  " call dein#add('joshdick/onedark.vim')
  " call dein#add('nanotech/jellybeans.vim')
- call dein#add('dracula/vim')
+ " call dein#add('dracula/vim')
+ call dein#add('drewtempelmeyer/palenight.vim')
 
  " Airline
- call dein#add('vim-airline/vim-airline')
- call dein#add('vim-airline/vim-airline-themes')
+ " call dein#add('vim-airline/vim-airline')
+ " call dein#add('vim-airline/vim-airline-themes')
+
+ " Lightline
+ call dein#add('itchyny/lightline.vim')
 
  " fzf and vim plugin
  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
@@ -88,15 +92,31 @@ endif
 filetype plugin indent on
 syntax enable
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
-colorscheme dracula
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
+
 set background=dark
+colorscheme palenight
 
 " Airline setup
-let g:airline_theme='dracula'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline_theme=''
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+
+" Lightline setup
+
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ }
 
 " Display an underline for the current line
 set cursorline
