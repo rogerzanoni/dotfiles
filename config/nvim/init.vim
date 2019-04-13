@@ -85,6 +85,9 @@ if dein#load_state('~/.cache/dein')
  " Vim commands for some shell commands
  call dein#add('tpope/vim-eunuch')
 
+ " Fade inactive windows
+ call dein#add('TaDaa/vimade')
+
  call dein#end()
  call dein#save_state()
 endif
