@@ -242,6 +242,13 @@ endif
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 
+" Highlight current line
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=234
+
 " don't automatically jump to first result
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
