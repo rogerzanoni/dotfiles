@@ -245,6 +245,9 @@ endif
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 
+let g:vimade = {}
+let g:vimade.fadelevel = 0.6
+
 " Highlight current line
 set cursorline
 hi cursorline cterm=none term=none
