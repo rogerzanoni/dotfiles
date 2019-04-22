@@ -9,7 +9,7 @@
     -
       command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
@@ -19,7 +19,7 @@
       stderr: true
       description: "Install yaourt from aur"
     -
-      command: yaourt -S global rofi gohufont-powerline light --noconfirm
+      command: yaourt -S global rofi gohufont-powerline light i3-gnome --noconfirm --needed
       stdout: true
       stderr: true
       description: "Installing aur packages"
@@ -49,6 +49,7 @@
     # i3
     ~/.i3/config: config/i3/config
     ~/.i3/conkyrc: config/i3/conkyrc
+    ~/.i3blocks.conf: config/i3/i3blocks.conf
     ~/bin/conky-i3bar: scripts/i3/conky-i3bar
     ~/bin/i3-time: scripts/i3/i3-time
 

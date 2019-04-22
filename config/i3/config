@@ -22,7 +22,7 @@ new_float pixel 1
 hide_edge_borders none
 
 # font for window titles. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:Droid Sans Regular 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -151,7 +151,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    status_command conky-i3bar
+    status_command i3blocks
 }
 
 # window control
@@ -161,10 +161,15 @@ for_window [title="xfce4-notifyd"] floating enable
 for_window [title="qmlscene"] floating enable
 for_window [class="Blueman-manager"] floating enable
 
+# i3-gnome
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
+
 #init commands
 exec --no-startup-id xrdb .Xresources
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec --no-startup-id feh --bg-max --randomize --no-fehbg ~/.wallpapers/*
 exec light -I
