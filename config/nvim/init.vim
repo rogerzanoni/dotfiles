@@ -88,6 +88,9 @@ if dein#load_state('~/.cache/dein')
  " Fade inactive windows
  call dein#add('TaDaa/vimade')
 
+ " Yank ring
+ call dein#add('cyansprite/Extract')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -341,3 +344,31 @@ nnoremap <leader>z <C-O>
 " Quick tab switching
 nnoremap <S-Left> :bp<CR>
 nnoremap <S-Right> :bn<CR>
+
+" Extract mappings
+" mappings for putting
+nmap p <Plug>(extract-put)
+nmap P <Plug>(extract-Put)
+
+nmap <leader>p :ExtractPin<cr>
+nmap <leader>P :ExtractUnPin<cr>
+
+" mappings for cycling
+map <m-s> <Plug>(extract-sycle)
+map <m-S> <Plug>(extract-Sycle)
+map <c-s> <Plug>(extract-cycle)
+
+" mappings for visual
+vmap p <Plug>(extract-put)
+vmap P <Plug>(extract-Put)
+
+" mappings for insert
+imap <m-v> <Plug>(extract-completeReg)
+imap <c-v> <Plug>(extract-completeList)
+imap <c-s> <Plug>(extract-cycle)
+imap <m-s> <Plug>(extract-sycle)
+imap <m-S> <Plug>(extract-Sycle)
+
+" mappings for replace
+nmap <silent> s <Plug>(extract-replace-normal)
+vmap <silent> s <Plug>(extract-replace-visual)
