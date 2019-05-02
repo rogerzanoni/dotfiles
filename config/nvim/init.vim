@@ -78,10 +78,6 @@ if dein#load_state('~/.cache/dein')
  " Tag management
  call dein#add('ludovicchabant/vim-gutentags')
 
- " Snippets
- call dein#add('SirVer/ultisnips')
- call dein#add('honza/vim-snippets')
-
  " Vim commands for some shell commands
  call dein#add('tpope/vim-eunuch')
 
@@ -244,9 +240,6 @@ let g:gutentags_cache_dir = expand('~/.cache/tags')
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
 
 let g:vimade = {}
 let g:vimade.fadelevel = 0.6
