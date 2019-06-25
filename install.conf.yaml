@@ -19,7 +19,7 @@
       stderr: true
       description: "Install yaourt from aur"
     -
-      command: yaourt -S global rofi gohufont-powerline light i3-gnome --noconfirm --needed
+      command: yaourt -S global rofi gohufont-powerline light i3-gnome --noconfirm --needed pyenv-virtualenv
       stdout: true
       stderr: true
       description: "Installing aur packages"
