@@ -9,7 +9,7 @@
     -
       command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
