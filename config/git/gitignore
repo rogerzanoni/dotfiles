@@ -1,5 +1,8 @@
 .tags
 tags
+tags.lock
+tags.temp
 GTAGS
 GRTAGS
 PATH
+compile_commands.json

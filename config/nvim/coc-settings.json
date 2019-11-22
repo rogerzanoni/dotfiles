@@ -1,0 +1,33 @@
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "index": {
+                    //"initialBlacklist": ["."],
+                    "threads": 4,
+                },
+            }
+        }
+    },
+    "coc.preferences.hoverTarget": "echo",
+    "suggest.floatEnable": false,
+    "diagnostic.messageTarget": "echo",
+    "signature.target": "echo",
+}

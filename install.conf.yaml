@@ -58,6 +58,7 @@
 
     # vim
     ~/.config/nvim/init.vim: config/nvim/init.vim
+    ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json
 
     # X
     ~/.xinitrc: config/x/xinitrc

@@ -9,9 +9,8 @@ if dein#load_state('~/.cache/dein')
 
  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
- " Autocomplete
- call dein#add('Shougo/deoplete.nvim')
- call dein#add('zchee/deoplete-clang')
+ " Completion
+ call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
 
  " Language support
  call dein#add('sheerun/vim-polyglot')
@@ -36,17 +35,11 @@ if dein#load_state('~/.cache/dein')
  " Ack
  call dein#add('mileszs/ack.vim')
 
- " Show vcs changes on buffer
- call dein#add('airblade/vim-gitgutter')
-
- " Easy motion
- call dein#add('easymotion/vim-easymotion')
+ " Aerojump
+ call dein#add('ripxorip/aerojump.nvim')
 
  " File tree
  call dein#add('scrooloose/nerdtree')
-
- " Tagbar
- call dein#add('majutsushi/tagbar')
 
  " NERDCommenter
  call dein#add('scrooloose/nerdcommenter')
@@ -75,9 +68,6 @@ if dein#load_state('~/.cache/dein')
  " Underline word (and matching words) under cursor
  call dein#add('itchyny/vim-cursorword')
 
- " Tag management
- call dein#add('ludovicchabant/vim-gutentags')
-
  " Vim commands for some shell commands
  call dein#add('tpope/vim-eunuch')
 
@@ -87,12 +77,14 @@ if dein#load_state('~/.cache/dein')
  " Yank ring
  call dein#add('cyansprite/Extract')
 
+ " LSP tag navigation
+ call dein#add('liuchengxu/vista.vim')
+
  call dein#end()
  call dein#save_state()
 endif
 
 filetype plugin indent on
-syntax enable
 
 if (has("nvim"))
   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -118,7 +110,18 @@ colorscheme palenight
 
 let g:lightline = {
       \ 'colorscheme': 'palenight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
       \ }
+
+" Mode info is displayed by lightline
+set noshowmode
 
 " Display an underline for the current line
 set cursorline
@@ -195,24 +198,6 @@ set mouse=a
 " Don't show weird completion window at the top
 set completeopt=menu
 
-" GitGutter setup
-let g:gitgutter_enabled = 1
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-let g:gitgutter_sign_added = '→'
-let g:gitgutter_sign_modified = '⇄'
-let g:gitgutter_sign_removed = '←'
-let g:gitgutter_sign_removed_first_line = '↽'
-let g:gitgutter_sign_modified_removed = '⇷'
-autocmd BufWritePost * GitGutter
-
-" deoplete setup
-
-let g:deoplete#sources#clang#libclang_path = $NVIM_LIBCLANG_PATH
-let g:deoplete#sources#clang#clang_header = $NVIM_LIBCLANG_HEADER_PATH
-let g:deoplete#enable_at_startup = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " Keybindingsss
 let mapleader = "\<space>"
 
@@ -234,9 +219,6 @@ let g:rainbow_active = 1
 " use rustfmt automatically on save
 let g:rustfmt_autosave = 1
 
-" Gutentags tag dir
-let g:gutentags_cache_dir = expand('~/.cache/tags')
-
 " make Ack plugin use ag
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -255,6 +237,29 @@ highlight CursorLine guibg=#303000 ctermbg=234
 " don't automatically jump to first result
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" navigate chunks of current buffer
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
 
 " Quick access to commands
 nnoremap ; :
@@ -301,12 +306,11 @@ nmap <leader>ll :BLines<cr>
 " FZF commits
 nmap <leader>, :Commits<cr>
 
-" FZF buffer commits
-nmap <leader>m :BCommits<cr>
+" FZF coc tags finder
+nmap <leader>m :Vista finder coc<cr>
 
-" FZF buffer tags
-" TODO commands for navigating code on rigth window
-nmap <leader>j :BTags<cr>
+" FZF buffer commits
+nmap <leader>k :BCommits<cr>
 
 " FZF helper to find sibling files
 nmap <leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
@@ -315,7 +319,7 @@ nmap <leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
 nmap <leader>n :NERDTreeToggle<cr>
 
 " Open tagbar
-nmap <leader>tt :TagbarToggle<cr>
+nmap <leader>tt :Vista coc<cr>
 
 " Switch header/source
 nmap <leader>q :FSHere<cr>
@@ -347,6 +351,9 @@ nmap P <Plug>(extract-Put)
 nmap <leader>p :ExtractPin<cr>
 nmap <leader>P :ExtractUnPin<cr>
 
+" Aerojump mappings
+nmap <leader>j <Plug>(AerojumpSpace)
+
 " mappings for cycling
 map <m-s> <Plug>(extract-sycle)
 map <m-S> <Plug>(extract-Sycle)
@@ -366,3 +373,7 @@ imap <m-S> <Plug>(extract-Sycle)
 " mappings for replace
 nmap <silent> s <Plug>(extract-replace-normal)
 vmap <silent> s <Plug>(extract-replace-visual)
+
+set laststatus=2
+syntax on
+syntax enable

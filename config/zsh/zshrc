@@ -33,13 +33,10 @@ bindkey '\ex' fzf-cd-widget
 
 export EDITOR='nvim'
 
-alias ec='emacsclient -t -a "" -c'
-alias et='emacs -nw'
-alias ek='emacs -nw --eval "(kill-emacs)"'
 alias t='tig'
-alias to='todo'
 alias nv='nvim'
 alias startx='ssh-agent startx'
+alias gfd=$'git log --oneline | fzf | cut -f1 -d\' \' | xargs git log -1 -p'
 
 source .zshrc_extra
 
