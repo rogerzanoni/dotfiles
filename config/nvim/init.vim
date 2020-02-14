@@ -18,15 +18,12 @@ if dein#load_state('~/.cache/dein')
  " Theme
  " call dein#add('joshdick/onedark.vim')
  " call dein#add('nanotech/jellybeans.vim')
- " call dein#add('dracula/vim')
- call dein#add('drewtempelmeyer/palenight.vim')
+ " call dein#add('drewtempelmeyer/palenight.vim')
+ call dein#add('dracula/vim')
 
- " Airline
- " call dein#add('vim-airline/vim-airline')
- " call dein#add('vim-airline/vim-airline-themes')
-
- " Lightline
- call dein#add('itchyny/lightline.vim')
+ " Status line
+ call dein#add('vim-airline/vim-airline')
+ call dein#add('vim-airline/vim-airline-themes')
 
  " fzf and vim plugin
  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
@@ -80,6 +77,8 @@ if dein#load_state('~/.cache/dein')
  " LSP tag navigation
  call dein#add('liuchengxu/vista.vim')
 
+ call dein#add('vimwiki/vimwiki')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -99,26 +98,20 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme palenight
+colorscheme dracula
 
 " Airline setup
-" let g:airline_theme=''
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
+let g:airline_theme='dracula'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-" Lightline setup
-
-let g:lightline = {
-      \ 'colorscheme': 'palenight',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
-      \ }
+" Wiki setup
+let g:vimwiki_list = [ {'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'custom_wiki2html': 'wiki2html.sh'},
+                      \{'path':  '~/vimwiki/todo/',
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'custom_wiki2html': 'wiki2html.sh'} ]
 
 " Mode info is displayed by lightline
 set noshowmode
