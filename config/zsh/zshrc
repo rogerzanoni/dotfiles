@@ -31,10 +31,9 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey '\ex' fzf-cd-widget
 
-export EDITOR='nvim'
+export EDITOR='nv'
 
 alias t='tig'
-alias nv='nvim'
 alias startx='ssh-agent startx'
 alias gfd=$'git log --oneline | fzf | cut -f1 -d\' \' | xargs git log -1 -p'
 

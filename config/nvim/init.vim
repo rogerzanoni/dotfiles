@@ -62,9 +62,6 @@ if dein#load_state('~/.cache/dein')
  " Rust support
  call dein#add('rust-lang/rust.vim')
 
- " Underline word (and matching words) under cursor
- call dein#add('itchyny/vim-cursorword')
-
  " Vim commands for some shell commands
  call dein#add('tpope/vim-eunuch')
 
@@ -332,9 +329,16 @@ vmap > >gv
 nnoremap <leader>x <C-]>
 nnoremap <leader>z <C-O>
 
-" Quick tab switching
+" Quick buffer switching
 nnoremap <S-Left> :bp<CR>
 nnoremap <S-Right> :bn<CR>
+nnoremap <S-X> :bdelete<CR>
+
+" Quick tab management
+nnoremap <C-S-N> :tabnew<CR>
+nnoremap <C-S-X> :tabclose<CR>
+nnoremap <C-PageUp> :tabp<CR>
+nnoremap <C-PageDown> :tabn<CR>
 
 " Extract mappings
 " mappings for putting
