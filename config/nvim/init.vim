@@ -15,11 +15,15 @@ if dein#load_state('~/.cache/dein')
  " Language support
  call dein#add('sheerun/vim-polyglot')
 
+ " Extra syntax highlight definitions
+ call dein#add('justinmk/vim-syntax-extra')
+
  " Theme
  " call dein#add('joshdick/onedark.vim')
  " call dein#add('nanotech/jellybeans.vim')
  " call dein#add('drewtempelmeyer/palenight.vim')
- call dein#add('dracula/vim')
+ " call dein#add('dracula/vim')
+ call dein#add('owickstrom/vim-colors-paramount')
 
  " Status line
  call dein#add('vim-airline/vim-airline')
@@ -43,9 +47,6 @@ if dein#load_state('~/.cache/dein')
 
  " Highlight trailing whitespaces
  call dein#add('ntpeters/vim-better-whitespace')
-
- " Rainbow parentheses
- call dein#add('luochen1990/rainbow')
 
  " Stop the paste madness
  call dein#add('roxma/vim-paste-easy')
@@ -76,6 +77,8 @@ if dein#load_state('~/.cache/dein')
 
  call dein#add('vimwiki/vimwiki')
 
+ call dein#add('RRethy/vim-illuminate')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -95,10 +98,10 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme dracula
+colorscheme paramount
 
 " Airline setup
-let g:airline_theme='dracula'
+let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -202,9 +205,6 @@ let g:fzf_buffers_jump = 1
 
 " Enable better withespace
 let g:better_whitespace_enabled=1
-
-" Rainbow always on
-let g:rainbow_active = 1
 
 " use rustfmt automatically on save
 let g:rustfmt_autosave = 1
