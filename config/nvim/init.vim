@@ -19,11 +19,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('justinmk/vim-syntax-extra')
 
  " Theme
- " call dein#add('joshdick/onedark.vim')
- " call dein#add('nanotech/jellybeans.vim')
- " call dein#add('drewtempelmeyer/palenight.vim')
- " call dein#add('dracula/vim')
- call dein#add('owickstrom/vim-colors-paramount')
+ call dein#add('morhetz/gruvbox')
 
  " Status line
  call dein#add('vim-airline/vim-airline')
@@ -77,7 +73,10 @@ if dein#load_state('~/.cache/dein')
 
  call dein#add('vimwiki/vimwiki')
 
- call dein#add('RRethy/vim-illuminate')
+ call dein#add('lfv89/vim-interestingwords')
+
+ " Distraction-free writing
+ call dein#add('junegunn/goyo.vim')
 
  call dein#end()
  call dein#save_state()
@@ -98,10 +97,11 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme paramount
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " Airline setup
-let g:airline_theme='minimalist'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -218,11 +218,10 @@ let g:vimade = {}
 let g:vimade.fadelevel = 0.6
 
 " Highlight current line
-set cursorline
-hi cursorline cterm=none term=none
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
-highlight CursorLine guibg=#303000 ctermbg=234
+augroup CustomCursorLine
+au!
+au VimEnter * :hi! CursorLine gui=underline cterm=underline ctermfg=None guifg=None ctermbg=None guibg=None
+augroup END
 
 " don't automatically jump to first result
 cnoreabbrev Ack Ack!
@@ -370,6 +369,16 @@ imap <m-S> <Plug>(extract-Sycle)
 " mappings for replace
 nmap <silent> s <Plug>(extract-replace-normal)
 vmap <silent> s <Plug>(extract-replace-visual)
+
+" Interesting words mappings
+let g:interestingWordsDefaultMappings = 0
+
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+
+nnoremap <silent> m :call WordNavigation(1)<cr>
+nnoremap <silent> M :call WordNavigation(0)<cr>
 
 set laststatus=2
 syntax on
