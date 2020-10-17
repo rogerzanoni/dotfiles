@@ -31,7 +31,8 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey '\ex' fzf-cd-widget
 
-export EDITOR='nv'
+alias nv='nvim'
+export EDITOR='nvim'
 
 alias t='tig'
 alias startx='ssh-agent startx'
@@ -40,3 +41,6 @@ alias gfd=$'git log --oneline | fzf | cut -f1 -d\' \' | xargs git log -1 -p'
 source .zshrc_extra
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"

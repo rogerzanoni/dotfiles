@@ -78,6 +78,8 @@ if dein#load_state('~/.cache/dein')
  " Distraction-free writing
  call dein#add('junegunn/goyo.vim')
 
+ call dein#add('RRethy/vim-illuminate')
+
  call dein#end()
  call dein#save_state()
 endif
