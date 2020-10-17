@@ -19,7 +19,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('justinmk/vim-syntax-extra')
 
  " Theme
- call dein#add('morhetz/gruvbox')
+ call dein#add('arcticicestudio/nord-vim')
 
  " Status line
  call dein#add('vim-airline/vim-airline')
@@ -100,10 +100,10 @@ endif
 
 set background=dark
 let g:gruvbox_italic=1
-colorscheme gruvbox
+colorscheme nord
 
 " Airline setup
-let g:airline_theme='gruvbox'
+let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
