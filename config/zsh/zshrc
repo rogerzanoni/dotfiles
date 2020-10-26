@@ -38,8 +38,6 @@ alias t='tig'
 alias startx='ssh-agent startx'
 alias gfd=$'git log --oneline | fzf | cut -f1 -d\' \' | xargs git log -1 -p'
 
-source .zshrc_extra
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GEM_HOME="$HOME/gems"
