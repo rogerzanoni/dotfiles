@@ -80,6 +80,15 @@ if dein#load_state('~/.cache/dein')
 
  call dein#add('RRethy/vim-illuminate')
 
+ " Markdown support
+ call dein#add('plasticboy/vim-markdown')
+
+ " Easy jumping
+ call dein#add('pechorin/any-jump.vim')
+
+ " Display chantges in gutter
+ call dein#add('airblade/vim-gitgutter')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -381,6 +390,17 @@ nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
 
 nnoremap <silent> m :call WordNavigation(1)<cr>
 nnoremap <silent> M :call WordNavigation(0)<cr>
+
+" Skip to next/prev hunk
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
+
+let g:gitgutter_sign_added = '►'
+let g:gitgutter_sign_modified = '⇛'
+let g:gitgutter_sign_removed = '◄'
+let g:gitgutter_sign_removed_first_line = '▲'
+let g:gitgutter_sign_removed_above_and_below = '⇇'
+let g:gitgutter_sign_modified_removed = '◅'
 
 set laststatus=2
 syntax on
