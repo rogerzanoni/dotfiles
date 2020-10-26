@@ -35,6 +35,11 @@
       stderr: true
       stdin: true
       description: "Installing dein"
+    -
+      command: ./install-ohmytmux
+      stdout: true
+      stderr: true
+      description: "Install oh-my-tmux"
 
 - link:
     ~/.dotfiles: ''
@@ -57,7 +62,7 @@
     ~/bin/i3-time: scripts/i3/i3-time
 
     # tmux
-    ~/.tmux.conf: config/tmux/tmux.conf
+    ~/.tmux.conf.local: config/tmux/tmux.conf
 
     # vim
     ~/.config/nvim/init.vim: config/nvim/init.vim
