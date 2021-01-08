@@ -4,6 +4,7 @@
             "command": "ccls",
             "filetypes": [
                 "c",
+                "cc",
                 "cpp",
                 "objc",
                 "objcpp"

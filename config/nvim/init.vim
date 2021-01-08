@@ -19,7 +19,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('justinmk/vim-syntax-extra')
 
  " Theme
- call dein#add('arcticicestudio/nord-vim')
+ call dein#add('drewtempelmeyer/palenight.vim')
 
  " Status line
  call dein#add('vim-airline/vim-airline')
@@ -78,8 +78,6 @@ if dein#load_state('~/.cache/dein')
  " Distraction-free writing
  call dein#add('junegunn/goyo.vim')
 
- call dein#add('RRethy/vim-illuminate')
-
  " Markdown support
  call dein#add('plasticboy/vim-markdown')
 
@@ -88,6 +86,12 @@ if dein#load_state('~/.cache/dein')
 
  " Display chantges in gutter
  call dein#add('airblade/vim-gitgutter')
+
+ " LSP syntax highlight
+ call dein#add('jackguo380/vim-lsp-cxx-highlight')
+
+ " Floating terminals
+ call dein#add('voldikss/vim-floaterm')
 
  call dein#end()
  call dein#save_state()
@@ -108,13 +112,14 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-let g:gruvbox_italic=1
-colorscheme nord
+colorscheme palenight
 
 " Airline setup
-let g:airline_theme='nord'
+let g:airline_theme='palenight'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+let g:palenight_terminal_italics=1
 
 " Wiki setup
 let g:vimwiki_list = [ {'path': '~/vimwiki/',
@@ -155,16 +160,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
-" Use spaces instead of tabs
-set expandtab
-
-" Insert spaces according to tabstops when hitting tab, etc
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
 
 " Reduce update time
 set updatetime=100
@@ -210,6 +205,9 @@ set clipboard+=unnamedplus
 
 " Open fzf files on the current window
 let g:fzf_layout = { 'window': 'enew' }
+
+" Disable the preview by default
+let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 
 " Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -384,6 +382,12 @@ vmap <silent> s <Plug>(extract-replace-visual)
 " Interesting words mappings
 let g:interestingWordsDefaultMappings = 0
 
+" Improve cpp highlighting
+"
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
 nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
 vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
 nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
@@ -395,13 +399,25 @@ nnoremap <silent> M :call WordNavigation(0)<cr>
 nmap ]g <Plug>(GitGutterNextHunk)
 nmap [g <Plug>(GitGutterPrevHunk)
 
-let g:gitgutter_sign_added = '►'
-let g:gitgutter_sign_modified = '⇛'
-let g:gitgutter_sign_removed = '◄'
-let g:gitgutter_sign_removed_first_line = '▲'
-let g:gitgutter_sign_removed_above_and_below = '⇇'
-let g:gitgutter_sign_modified_removed = '◅'
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_removed = '┃'
+let g:gitgutter_sign_removed_first_line = '╿'
+let g:gitgutter_sign_removed_above_and_below = '┃'
+let g:gitgutter_sign_modified_removed = '┃'
 
 set laststatus=2
 syntax on
 syntax enable
+
+" Use spaces instead of tabs
+set expandtab
+
+" Insert spaces according to tabstops when hitting tab, etc
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+
