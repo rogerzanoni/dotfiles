@@ -71,8 +71,6 @@ if dein#load_state('~/.cache/dein')
  " LSP tag navigation
  call dein#add('liuchengxu/vista.vim')
 
- call dein#add('vimwiki/vimwiki')
-
  call dein#add('lfv89/vim-interestingwords')
 
  " Distraction-free writing
@@ -120,14 +118,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 let g:palenight_terminal_italics=1
-
-" Wiki setup
-let g:vimwiki_list = [ {'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md',
-                      \ 'custom_wiki2html': 'wiki2html.sh'},
-                      \{'path':  '~/vimwiki/todo/',
-                      \ 'syntax': 'markdown', 'ext': '.md',
-                      \ 'custom_wiki2html': 'wiki2html.sh'} ]
 
 " Mode info is displayed by lightline
 set noshowmode
