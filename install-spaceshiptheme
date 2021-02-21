@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+DESTDIR=$HOME/.oh-my-zsh/custom
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$DESTDIR/themes/spaceship-prompt" --depth=1
+ln -s "$DESTDIR/themes/spaceship-prompt/spaceship.zsh-theme" "$DESTDIR/themes/spaceship.zsh-theme"

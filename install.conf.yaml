@@ -9,7 +9,7 @@
     -
       command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv kitty
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
@@ -29,6 +29,24 @@
       stderr: true
       stdin: true
       description: "Installing oh-my-zsh"
+    -
+      command: ./install-spaceshiptheme
+      stdout: true
+      stderr: true
+      stdin: true
+      description: "Installing oh-my-zsh theme"
+    -
+      command: ./install-zsh-highlight
+      stdout: true
+      stderr: true
+      stdin: true
+      description: "Installing zsh syntax highlighting plugin"
+    -
+      command: ./install-zsh-autocompl
+      stdout: true
+      stderr: true
+      stdin: true
+      description: "Installing zsh autosuggestions plugin"
     -
       command: ./install-dein
       stdout: true
