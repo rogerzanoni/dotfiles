@@ -65,10 +65,6 @@
     # alacritty
     ~/.alacritty.yml: config/alacritty/alacritty.yml
 
-    # emacs
-    ~/.emacs.d: config/newemacs
-    ~/.emacs_zsh: config/zsh/emacs_zsh
-
     # git
     ~/.gitignore: config/git/gitignore
 

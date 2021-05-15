@@ -14,11 +14,6 @@ xterm*vt100*geometry: 80x60
 *locale: true
 *vt100Graphics: true
 
-Emacs.FontBackend: xft
-Emacs.menuBar: off
-Emacs.verticalScrollBars: off
-Emacs.toolBar: off
-
 Xft.embolden: false
 Xft.antialias:  true
 Xft.rgba:       rgb
