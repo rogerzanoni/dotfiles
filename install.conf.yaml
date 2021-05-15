@@ -7,7 +7,7 @@
 
 - shell:
     -
-      command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim ; mkdir -p ~/.config/sway/waybar ; mkdir -p ~/.config/dunst
+      command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim ; mkdir -p ~/.config/sway ; mkdir -p ~/.config/waybar ; mkdir -p ~/.config/dunst
     -
       command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv browserpass-chromium sway waybar
       stdout: true
