@@ -4,3 +4,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bi
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+source "$HOME/.cargo/env"
