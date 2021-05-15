@@ -91,6 +91,12 @@ if dein#load_state('~/.cache/dein')
  " Floating terminals
  call dein#add('voldikss/vim-floaterm')
 
+ " Vimwiki
+ call dein#add('vimwiki/vimwiki')
+
+ " calendar
+ call dein#add('mattn/calendar-vim')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -395,6 +401,25 @@ let g:gitgutter_sign_removed = '┃'
 let g:gitgutter_sign_removed_first_line = '╿'
 let g:gitgutter_sign_removed_above_and_below = '┃'
 let g:gitgutter_sign_modified_removed = '┃'
+
+" vimwiki set up
+let g:vimwiki_list = [{'path': '~/Nextcloud/Notes/',
+                       \ 'syntax': 'markdown', 'auto_toc' : 1,
+                       \ 'ext': '.md'}]
+
+command! Diary VimwikiDiaryIndex
+au BufEnter,BufNewFile diary.md VimwikiDiaryGenerateLinks
+nmap <leader>dd :Diary<cr>
+nmap <leader>dc :Calendar<cr>
+
+" Todo, make a function
+command! DiaryDate execute "normal! i" . strftime('%d.%m.%Y') . "\<Esc>"
+command! DiaryHeader execute "normal! i" . "# " . strftime('%d.%m.%Y') . "\<Esc>"
+command! DiaryTime execute "normal! i" . strftime('%H:%M') . "\<Esc>"
+command! DiaryClockIn execute "normal! i" . "Clock in: " . strftime('%H:%M') . "\<Esc>"
+command! DiaryClockOut execute "normal! i" . "Clock out: " . strftime('%H:%M') . "\<Esc>"
+command! DiaryBreakStart execute "normal! i" . "Break start: " . strftime('%H:%M') . "\<Esc>"
+command! DiaryBreakEnd execute "normal! i" . "Break end: " . strftime('%H:%M') . "\<Esc>"
 
 set laststatus=2
 syntax on
