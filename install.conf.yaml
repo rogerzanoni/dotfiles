@@ -7,9 +7,9 @@
 
 - shell:
     -
-      command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim
+      command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim ; mkdir -p ~/.config/sway/waybar
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim emacs i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv kitty
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv browserpass-chromium sway waybar
       stdout: true
       stderr: true
       description: "Installing base packages (dev, i3)"
@@ -19,7 +19,7 @@
       stderr: true
       description: "Install yaourt from aur"
     -
-      command: yaourt -S global rofi gohufont-powerline light i3-gnome --noconfirm --needed pyenv-virtualenv
+      command: yaourt -S global rofi gohufont-powerline light i3-gnome pyenv-virtualenv powerline-fonts-git --noconfirm --needed
       stdout: true
       stderr: true
       description: "Installing aur packages"
@@ -78,6 +78,11 @@
     ~/.i3blocks.conf: config/i3/i3blocks.conf
     ~/bin/conky-i3bar: scripts/i3/conky-i3bar
     ~/bin/i3-time: scripts/i3/i3-time
+
+    # sway
+    ~/.config/sway/config: config/sway/config
+    ~/.config/waybar/config: config/sway/waybar/config
+    ~/.config/waybar/style.css: config/sway/waybar/style.css
 
     # tmux
     ~/.tmux.conf.local: config/tmux/tmux.conf
