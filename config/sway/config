@@ -185,9 +185,6 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #dc3225
 set $indicator-color     #404552
 
-# wallpaper
-output "*" bg ~/wallpapers/antifa-area-sobel.jpg fill
-
 for_window [app_id="alacritty"] opacity 0.95
 for_window [app_id="galculator"] floating enable
 for_window [app_id="pavucontrol"] floating enable
@@ -217,8 +214,5 @@ exec --no-startup-id swaymsg 'workspace $ws0; exec alacritty'
 
 exec --no-startup-id swaymsg 'workspace $ws9; exec element-desktop'
 exec --no-startup-id swaymsg 'workspace $ws9; exec thunderbird'
-exec --no-startup-id swaymsg 'workspace $ws9; exec telegram-desktop'
-
-exec --no-startup-id swaymsg 'workspace $ws8; exec joplin-desktop'
 
 workspace $ws1
