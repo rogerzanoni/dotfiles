@@ -8,3 +8,8 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
+
+export TIMEWARRIORDB=$HOME/Nextcloud/TimeW/.timewarrior
+export TASKRC=$HOME/Nextcloud/Task/.taskrc
+export TASKDATA=$HOME/Nextcloud/Task/.task
