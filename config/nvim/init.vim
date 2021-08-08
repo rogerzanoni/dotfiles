@@ -18,8 +18,9 @@ if dein#load_state('~/.cache/dein')
  " Extra syntax highlight definitions
  call dein#add('justinmk/vim-syntax-extra')
 
- " Theme
+ " Themes
  call dein#add('drewtempelmeyer/palenight.vim')
+ call dein#add('sonph/onehalf', {'rtp': 'vim/'})
 
  " Status line
  call dein#add('vim-airline/vim-airline')
@@ -97,6 +98,12 @@ if dein#load_state('~/.cache/dein')
  " calendar
  call dein#add('mattn/calendar-vim')
 
+ " Preview colors in css
+ call dein#add('ap/vim-css-color')
+
+ " multiple cursors
+ call dein#add('mg979/vim-visual-multi')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -116,10 +123,10 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme palenight
+colorscheme onehalfdark
 
 " Airline setup
-let g:airline_theme='palenight'
+let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -334,8 +341,8 @@ nnoremap <leader>x <C-]>
 nnoremap <leader>z <C-O>
 
 " Quick buffer switching
-nnoremap <S-Left> :bp<CR>
-nnoremap <S-Right> :bn<CR>
+nnoremap <C-S-Left> :bp<CR>
+nnoremap <C-S-Right> :bn<CR>
 nnoremap <S-X> :bdelete<CR>
 
 " Quick tab management
@@ -394,13 +401,6 @@ nnoremap <silent> M :call WordNavigation(0)<cr>
 " Skip to next/prev hunk
 nmap ]g <Plug>(GitGutterNextHunk)
 nmap [g <Plug>(GitGutterPrevHunk)
-
-let g:gitgutter_sign_added = '┃'
-let g:gitgutter_sign_modified = '┃'
-let g:gitgutter_sign_removed = '┃'
-let g:gitgutter_sign_removed_first_line = '╿'
-let g:gitgutter_sign_removed_above_and_below = '┃'
-let g:gitgutter_sign_modified_removed = '┃'
 
 " vimwiki set up
 let g:vimwiki_list = [{'path': '~/Nextcloud/Notes/',

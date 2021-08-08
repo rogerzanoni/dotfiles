@@ -204,7 +204,7 @@ workspace $ws9 output DP-3
 
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mako
 
 exec --no-startup-id swaymsg 'workspace $ws1; exec chromium'
