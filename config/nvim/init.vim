@@ -9,9 +9,6 @@ if dein#load_state('~/.cache/dein')
 
  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
- " Completion
- call dein#add('neoclide/coc.nvim', {'merge':0, 'rev': 'release'})
-
  " Language support
  call dein#add('sheerun/vim-polyglot')
 
@@ -69,9 +66,6 @@ if dein#load_state('~/.cache/dein')
  " Yank ring
  call dein#add('cyansprite/Extract')
 
- " LSP tag navigation
- call dein#add('liuchengxu/vista.vim')
-
  call dein#add('lfv89/vim-interestingwords')
 
  " Distraction-free writing
@@ -85,9 +79,6 @@ if dein#load_state('~/.cache/dein')
 
  " Display chantges in gutter
  call dein#add('airblade/vim-gitgutter')
-
- " LSP syntax highlight
- call dein#add('jackguo380/vim-lsp-cxx-highlight')
 
  " Floating terminals
  call dein#add('voldikss/vim-floaterm')
@@ -103,6 +94,11 @@ if dein#load_state('~/.cache/dein')
 
  " multiple cursors
  call dein#add('mg979/vim-visual-multi')
+
+ " Autocomplete/lsp
+ call dein#add('prabirshrestha/vim-lsp')
+ call dein#add('Shougo/deoplete.nvim')
+ call dein#add('lighttiger2505/deoplete-vim-lsp')
 
  call dein#end()
  call dein#save_state()
@@ -229,6 +225,22 @@ endif
 let g:vimade = {}
 let g:vimade.fadelevel = 0.6
 
+" setting with vim-lsp
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(
+      \   lsp#utils#find_nearest_parent_file_directory(
+      \     lsp#utils#get_buffer_path(), ['.ccls', 'compile_commands.json', '.git/']))},
+      \ 'initialization_options': {
+      \   'highlight': { 'lsRanges' : v:true },
+      \   'cache': {'directory': stdpath('cache') . '/ccls' },
+      \ },
+      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+
 " Highlight current line
 augroup CustomCursorLine
 au!
@@ -245,22 +257,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" navigate chunks of current buffer
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" show chunk diff at current position
-nmap gs <Plug>(coc-git-chunkinfo)
-" show commit contains current position
-nmap gc <Plug>(coc-git-commit)
 
 " Quick access to commands
 nnoremap ; :
@@ -307,9 +306,6 @@ nmap <leader>ll :BLines<cr>
 " FZF commits
 nmap <leader>, :Commits<cr>
 
-" FZF coc tags finder
-nmap <leader>m :Vista finder coc<cr>
-
 " FZF buffer commits
 nmap <leader>k :BCommits<cr>
 
@@ -318,9 +314,6 @@ nmap <leader>. :Files <C-r>=expand("%:h")<CR>/<CR>
 
 " Open file tree
 nmap <leader>n :NERDTreeToggle<cr>
-
-" Open tagbar
-nmap <leader>tt :Vista coc<cr>
 
 " Switch header/source
 nmap <leader>q :FSHere<cr>
