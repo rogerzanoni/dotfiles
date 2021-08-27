@@ -34,7 +34,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('ripxorip/aerojump.nvim')
 
  " File tree
- call dein#add('scrooloose/nerdtree')
+ call dein#add('preservim/nerdtree')
 
  " NERDCommenter
  call dein#add('scrooloose/nerdcommenter')
@@ -100,6 +100,15 @@ if dein#load_state('~/.cache/dein')
  call dein#add('Shougo/deoplete.nvim')
  call dein#add('lighttiger2505/deoplete-vim-lsp')
 
+ " Snippets
+ call dein#add('SirVer/ultisnips')
+ call dein#add('honza/vim-snippets')
+ call dein#add('thomasfaingnaert/vim-lsp-snippets')
+ call dein#add('thomasfaingnaert/vim-lsp-ultisnips')
+
+ " Matching text nav
+ call dein#install('andymass/vim-matchup')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -150,7 +159,7 @@ set listchars=tab:▶·,trail:·
 set list
 
 " Default encoding
-set encoding=utf8
+set encoding=UTF-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -240,6 +249,14 @@ if executable('ccls')
       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
       \ })
 endif
+
+" Autocomplete
+
+let g:deoplete#enable_at_startup = 1
+
+" Snippets
+
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " Highlight current line
 augroup CustomCursorLine
@@ -404,15 +421,6 @@ command! Diary VimwikiDiaryIndex
 au BufEnter,BufNewFile diary.md VimwikiDiaryGenerateLinks
 nmap <leader>dd :Diary<cr>
 nmap <leader>dc :Calendar<cr>
-
-" Todo, make a function
-command! DiaryDate execute "normal! i" . strftime('%d.%m.%Y') . "\<Esc>"
-command! DiaryHeader execute "normal! i" . "# " . strftime('%d.%m.%Y') . "\<Esc>"
-command! DiaryTime execute "normal! i" . strftime('%H:%M') . "\<Esc>"
-command! DiaryClockIn execute "normal! i" . "Clock in: " . strftime('%H:%M') . "\<Esc>"
-command! DiaryClockOut execute "normal! i" . "Clock out: " . strftime('%H:%M') . "\<Esc>"
-command! DiaryBreakStart execute "normal! i" . "Break start: " . strftime('%H:%M') . "\<Esc>"
-command! DiaryBreakEnd execute "normal! i" . "Break end: " . strftime('%H:%M') . "\<Esc>"
 
 set laststatus=2
 syntax on
