@@ -109,6 +109,9 @@ if dein#load_state('~/.cache/dein')
  " Matching text nav
  call dein#install('andymass/vim-matchup')
 
+ " Auto setup indent style
+ call dein#install('tpope/vim-sleuth')
+
  call dein#end()
  call dein#save_state()
 endif
@@ -431,10 +434,6 @@ set expandtab
 
 " Insert spaces according to tabstops when hitting tab, etc
 set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
 
 au! BufEnter *.cpp,*.cc,*.c let b:fswitchdst = 'h,hpp'    | let b:fswitchlocs = 'reg:/src/include/,../include,./'
 au! BufEnter *.h,*.hpp      let b:fswitchdst = 'cpp,cc,c' | let b:fswitchlocs = 'reg:/include/src/,../src,./'
