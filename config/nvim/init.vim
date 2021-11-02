@@ -18,6 +18,7 @@ if dein#load_state('~/.cache/dein')
  " Themes
  call dein#add('drewtempelmeyer/palenight.vim')
  call dein#add('sonph/onehalf', {'rtp': 'vim/'})
+ call dein#add('NLKNguyen/papercolor-theme')
 
  " Status line
  call dein#add('vim-airline/vim-airline')
@@ -80,9 +81,6 @@ if dein#load_state('~/.cache/dein')
  " Display chantges in gutter
  call dein#add('airblade/vim-gitgutter')
 
- " Floating terminals
- call dein#add('voldikss/vim-floaterm')
-
  " Vimwiki
  call dein#add('vimwiki/vimwiki')
 
@@ -131,10 +129,10 @@ if (has("termguicolors"))
 endif
 
 set background=dark
-colorscheme onehalfdark
+colorscheme PaperColor
 
 " Airline setup
-let g:airline_theme='onehalfdark'
+let g:airline_theme='raven'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -260,6 +258,7 @@ let g:deoplete#enable_at_startup = 1
 " Snippets
 
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " Highlight current line
 augroup CustomCursorLine
@@ -312,7 +311,7 @@ nmap <leader>f :Files<cr>
 nmap <leader>b :Buffers<cr>
 
 " FZF history search
-nmap <leader>r :History<cr>
+nmap <leader>rr :History<cr>
 
 " FZF tag search
 nmap <leader>t :Tags<cr>
@@ -338,6 +337,12 @@ nmap <leader>n :NERDTreeToggle<cr>
 " Switch header/source
 nmap <leader>q :FSHere<cr>
 
+" Refactor
+nmap <leader>r :LspRename<cr>
+
+" References
+nmap <leader>re :LspReferences<cr>
+
 " Sane line movement on wrapped lines
 nnoremap j gj
 nnoremap k gk
@@ -354,8 +359,8 @@ nnoremap <leader>x <C-]>
 nnoremap <leader>z <C-O>
 
 " Quick buffer switching
-nnoremap <C-S-Left> :bp<CR>
-nnoremap <C-S-Right> :bn<CR>
+nnoremap <C-Left> :bp<CR>
+nnoremap <C-Right> :bn<CR>
 nnoremap <S-X> :bdelete<CR>
 
 " Quick tab management

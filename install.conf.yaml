@@ -85,7 +85,7 @@
 
     # vim
     ~/.config/nvim/init.vim: config/nvim/init.vim
-    ~/.config/nvim/coc-settings.json: config/nvim/coc-settings.json
+    ~/.config/nvim/custom-snippets: config/nvim/custom-snippets
 
     # X
     ~/.xinitrc: config/x/xinitrc
