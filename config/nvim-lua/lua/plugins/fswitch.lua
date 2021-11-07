@@ -5,4 +5,4 @@ local map = vim.api.nvim_set_keymap
 cmd 'au! BufEnter *.cpp,*.cc,*.c let b:fswitchdst = "h,hpp"    | let b:fswitchlocs = "reg:/src/include/,../include,./"'
 cmd 'au! BufEnter *.h,*.hpp      let b:fswitchdst = "cpp,cc,c" | let b:fswitchlocs = "reg:/include/src/,../src,./"'
 
-map('n', '<leader>q', ':FSHere<CR>', { noremap = true, silent = true })
+map('n', '<leader><space>', ':FSHere<CR>', { noremap = true, silent = true })
