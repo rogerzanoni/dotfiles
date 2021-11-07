@@ -7,3 +7,4 @@ GRTAGS
 PATH
 compile_commands.json
 .python-version
+.cache

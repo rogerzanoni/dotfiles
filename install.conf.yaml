@@ -89,8 +89,7 @@
     ~/.tmux.conf.local: config/tmux/tmux.conf
 
     # vim
-    ~/.config/nvim/init.vim: config/nvim/init.vim
-    ~/.config/nvim/custom-snippets: config/nvim/custom-snippets
+    ~/.config/nvim: config/nvim-lua
 
     # X
     ~/.xinitrc: config/x/xinitrc
