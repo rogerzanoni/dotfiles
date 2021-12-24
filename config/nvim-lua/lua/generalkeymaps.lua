@@ -5,7 +5,7 @@ map('n', 'j', 'gj', { noremap = true })
 map('n', 'k', 'gk', { noremap = true })
 
 -- splits
-map('n', '<leader>b', '<c-w>s', { noremap = true }) -- horizontal split
+map('n', '<leader>j', '<c-w>s', { noremap = true }) -- horizontal split
 map('n', '<leader>v', '<c-w>v', { noremap = true }) -- vertical split
 map('n', '<leader>c', '<c-w>c', { noremap = true }) -- close split
 map('n', '<leader>o', '<c-w>o', { noremap = true }) -- close all except the current split

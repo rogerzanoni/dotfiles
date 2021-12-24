@@ -11,8 +11,7 @@ require 'paq' {
   'savq/paq-nvim';
 
   -- colorscheme
-  'NLKNguyen/papercolor-theme';
-  'kyazdani42/blue-moon';
+  'arcticicestudio/nord-vim';
 
   -- lualine
   'kyazdani42/nvim-web-devicons';
