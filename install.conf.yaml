@@ -7,22 +7,12 @@
 
 - shell:
     -
-      command: mkdir ~/bin; mkdir ~/.i3; mkdir -p ~/.config/nvim ; mkdir -p ~/.config/sway ; mkdir -p ~/.config/waybar ; mkdir -p ~/.config/dunst
+      command: mkdir ~/bin; mkdir -p ~/.config/nvim ; mkdir -p ~/.config/sway ; mkdir -p ~/.config/waybar ; mkdir -p ~/.config/dunst
     -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim i3-wm i3blocks networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm conky curl zsh openssh tig npm clang alsa-utils ranger blueman tmux ctags curl pkgconf alacritty python-neovim ttf-font-awesome sysstat gnome-flashback gnome-power-manager gnome-control-center pyenv browserpass-chromium sway waybar kitty
+      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm curl zsh openssh tig clang alsa-utils blueman ctags curl pkgconf python-neovim ttf-font-awesome sysstat pyenv browserpass-chromium sway waybar kitty
       stdout: true
       stderr: true
-      description: "Installing base packages (dev, i3)"
-    -
-      command: ./install-yaourt
-      stdout: true
-      stderr: true
-      description: "Install yaourt from aur"
-    -
-      command: yaourt -S global rofi gohufont-powerline light i3-gnome pyenv-virtualenv powerline-fonts-git --noconfirm --needed
-      stdout: true
-      stderr: true
-      description: "Installing aur packages"
+      description: "Installing base packages (dev, sway)"
     -
       command: ./install-ohmyzsh
       stdout: true
@@ -54,11 +44,6 @@
       stdin: true
       description: "Installing dein"
     -
-      command: ./install-ohmytmux
-      stdout: true
-      stderr: true
-      description: "Install oh-my-tmux"
-    -
       command: ./install-kitty-themes
       stdout: true
       stderr: true
@@ -67,28 +52,15 @@
 - link:
     ~/.dotfiles: ''
 
-    # alacritty
-    ~/.alacritty.yml: config/alacritty/alacritty.yml
-
     # git
     ~/.gitignore: config/git/gitignore
-
-    # i3
-    ~/.i3/config: config/i3/config
-    ~/.i3/conkyrc: config/i3/conkyrc
-    ~/.i3blocks.conf: config/i3/i3blocks.conf
-    ~/bin/conky-i3bar: scripts/i3/conky-i3bar
-    ~/bin/i3-time: scripts/i3/i3-time
 
     # sway
     ~/.config/sway/config: config/sway/config
     ~/.config/waybar/config: config/sway/waybar/config
     ~/.config/waybar/style.css: config/sway/waybar/style.css
 
-    # tmux
-    ~/.tmux.conf.local: config/tmux/tmux.conf
-
-    # vim
+    # nvim
     ~/.config/nvim: config/nvim-lua
 
     # X
