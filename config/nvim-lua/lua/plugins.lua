@@ -11,7 +11,7 @@ require 'paq' {
   'savq/paq-nvim';
 
   -- colorscheme
-  'arcticicestudio/nord-vim';
+  'EdenEast/nightfox.nvim';
 
   -- lualine
   'kyazdani42/nvim-web-devicons';
@@ -59,6 +59,7 @@ require 'paq' {
   'hrsh7th/cmp-path';
   'hrsh7th/cmp-cmdline';
   'hrsh7th/nvim-cmp';
+  'j-hui/fidget.nvim';
 
   -- snippets
   'SirVer/ultisnips';
@@ -76,6 +77,12 @@ require 'paq' {
   -- hightlight word under cursor
   'lfv89/vim-interestingwords';
   'RRethy/vim-illuminate';
+
+  -- tab completion
+  'ervandew/supertab';
+
+  'ray-x/guihua.lua';
+  'ray-x/navigator.lua';
 }
 
 -- plugins settings
@@ -86,4 +93,5 @@ require('plugins/fswitch')
 require('plugins/gitgutter')
 require('plugins/vimwiki')
 require('plugins/lsp')
+require('plugins/supertab')
 require('plugins/treesitter')

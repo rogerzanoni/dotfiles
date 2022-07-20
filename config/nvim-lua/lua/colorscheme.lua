@@ -5,6 +5,6 @@ local opt = vim.opt
 
 opt.termguicolors = true -- enable 24-bit RGB colors
 opt.background    = 'dark'
-cmd [[colorscheme nord]]
+cmd [[colorscheme duskfox]]
 
 require('plugins/lualine')

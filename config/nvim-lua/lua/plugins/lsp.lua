@@ -2,6 +2,8 @@ local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
 
+require"fidget".setup{}
+
 opt.completeopt = {'menuone', 'noinsert', 'noselect'}
 
 local cmp = require'cmp'
@@ -88,7 +90,7 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require('lspconfig')['clangd'].setup {
   capabilities = capabilities,
-  on_attach = on_attach,
+  --on_attach = on_attach,
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -103,3 +105,5 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+require'navigator'.setup()
