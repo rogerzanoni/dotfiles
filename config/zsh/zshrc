@@ -38,7 +38,8 @@ alias t='tig'
 alias startx='ssh-agent startx'
 alias gfd=$'git log --oneline | fzf | cut -f1 -d\' \' | xargs git log -1 -p'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
