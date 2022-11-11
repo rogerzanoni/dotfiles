@@ -18,7 +18,7 @@ floating_modifier $mod
 # show / hide status bar
 bindsym $mod+m bar mode toggle
 
-set $term alacritty
+set $term kitty
 # start a terminal
 bindsym $mod+Return exec $term
 # start file manager
@@ -206,13 +206,3 @@ exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mako
-
-exec --no-startup-id swaymsg 'workspace $ws1; exec chromium'
-
-exec --no-startup-id swaymsg 'workspace $ws2; exec alacritty'
-exec --no-startup-id swaymsg 'workspace $ws0; exec alacritty'
-
-exec --no-startup-id swaymsg 'workspace $ws9; exec element-desktop'
-exec --no-startup-id swaymsg 'workspace $ws9; exec thunderbird'
-
-workspace $ws1
