@@ -9,3 +9,5 @@ compile_commands.json
 .python-version
 .cache
 jsconfig.json
+.ccls
+.ccls-cache
