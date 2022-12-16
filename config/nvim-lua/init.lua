@@ -85,6 +85,8 @@ require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use 'ap/vim-css-color'
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -320,7 +322,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -357,10 +359,12 @@ local on_attach = function(_, bufnr)
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
     { desc = 'Format current buffer with LSP' })
+
+  client.server_capabilities.documentFormattingProvider = false
 end
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'bashls', 'jsonls', 'cssls', 'html', 'tsserver' }
+local servers = { 'ccls', 'rust_analyzer', 'pyright', 'bashls', 'jsonls', 'cssls', 'html', 'tsserver' }
 
 -- Ensure the servers above are installed
 require('nvim-lsp-installer').setup {
@@ -371,8 +375,13 @@ local lspconfig = require 'lspconfig'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 for _, lsp in ipairs(servers) do
-  if lsp == 'clangd' then
-    lspconfig.clangd.setup {
+  if lsp == 'ccls' then
+    lspconfig.ccls.setup {
+      init_options = {
+        index = {
+          threads = 4;
+        },
+      },
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "c", "cc", "cpp", "objc", "objcpp", "cuda", "proto" },
