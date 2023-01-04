@@ -45,23 +45,8 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'onsails/lspkind.nvim'
 
-  -- Show lsp progress
-  use 'j-hui/fidget.nvim'
-
   -- show treesitter context
   use 'nvim-treesitter/nvim-treesitter-context'
-
-  -- highlight matching text
-  use 'andymass/vim-matchup'
-
-  -- ease navigation (lsp)
-  use({
-    'ray-x/navigator.lua',
-    requires = {
-      { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-      { 'neovim/nvim-lspconfig' },
-    },
-  })
 
   -- use silver searcher on nvim
   use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
@@ -75,7 +60,8 @@ require('packer').startup(function(use)
   }
 
   -- colorscheme
-  use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
+  -- use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
+  use {'morhetz/gruvbox'}
 
   -- auto detect indenting
   use 'tpope/vim-sleuth'
@@ -84,6 +70,16 @@ require('packer').startup(function(use)
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
+
+  -- session management
+  use({
+    "olimorris/persisted.nvim",
+    --module = "persisted", -- For lazy loading
+    config = function()
+      require("persisted").setup()
+      require("telescope").load_extension("persisted") -- To load the telescope extension
+    end,
+  })
 
   use 'ap/vim-css-color'
 
@@ -149,7 +145,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme moonfly]]
+vim.cmd [[colorscheme gruvbox]]
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -185,7 +181,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'moonfly',
+    theme = 'auto',
     component_separators = '|',
     section_separators = '',
   },
@@ -211,13 +207,7 @@ require('gitsigns').setup {
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'python', 'javascript' },
-
-  matchup = {
-    enable = true, -- mandatory, false will disable the whole extension
-    -- [options]
-  },
-
-  highlight = { enable = true },
+  highlight = { enable = true, additional_vim_regex_highlighting = false },
   --indent = { enable = true },
   incremental_selection = {
     enable = true,
@@ -322,7 +312,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -359,12 +349,10 @@ local on_attach = function(client, bufnr)
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
     { desc = 'Format current buffer with LSP' })
-
-  client.server_capabilities.documentFormattingProvider = false
 end
 
 -- Enable the following language servers
-local servers = { 'ccls', 'rust_analyzer', 'pyright', 'bashls', 'jsonls', 'cssls', 'html', 'tsserver' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'bashls', 'jsonls', 'cssls', 'html', 'tsserver' }
 
 -- Ensure the servers above are installed
 require('nvim-lsp-installer').setup {
@@ -375,12 +363,11 @@ local lspconfig = require 'lspconfig'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 for _, lsp in ipairs(servers) do
-  if lsp == 'ccls' then
-    lspconfig.ccls.setup {
-      init_options = {
-        index = {
-          threads = 4;
-        },
+  if lsp == 'clangd' then
+    lspconfig.clangd.setup {
+      cmd = {
+        "clangd", "-j=2", "--background-index", "--suggest-missing-includes", "--clang-tidy",
+        "--header-insertion=iwyu"
       },
       capabilities = capabilities,
       on_attach = on_attach,
@@ -424,15 +411,11 @@ telescope.load_extension('fzf')
 map('n', '<leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
 map('n', '<leader>g', ':Telescope git_files<CR>', { noremap = true, silent = true })
 map('n', '<leader>b', ':Telescope buffers<CR>', { noremap = true, silent = true })
-map('n', '<leader>g', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+map('n', '<leader>l', ':Telescope jumplist<CR>', { noremap = true, silent = true })
+map('n', '<leader>h', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
+map('n', '<leader>y', ':Telescope current_buffer_fuzzy_find<CR>', { noremap = true, silent = true })
 
 map('n', '<leader>s', ':Ag<Space>', { noremap = true })
-
--- lsp easy navigation
-require 'navigator'.setup()
-
--- show lsp progress
-require "fidget".setup {}
 
 -- cmp setup
 local cmp = require 'cmp'
@@ -478,7 +461,7 @@ cmp.setup({
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
-  mapping = {
+  mapping = cmp.mapping.preset.insert({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -509,7 +492,7 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  },
+  }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp', keyword_length = 3 },
     -- { name = 'vsnip' }, -- For vsnip users.
@@ -524,6 +507,7 @@ cmp.setup({
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
   }
@@ -531,6 +515,7 @@ cmp.setup.cmdline('/', {
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path' }
   }, {

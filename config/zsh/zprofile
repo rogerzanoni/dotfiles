@@ -6,9 +6,6 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bi
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 
-export TIMEWARRIORDB=$HOME/Nextcloud/TimeW/.timewarrior
-export TASKRC=$HOME/Nextcloud/Task/.taskrc
-export TASKDATA=$HOME/Nextcloud/Task/.task
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
