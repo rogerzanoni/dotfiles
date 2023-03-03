@@ -53,4 +53,7 @@ if [ "$DESKTOP_SESSION" = "/usr/share/wayland-sessions/sway" ];then
     export SSH_AUTH_SOCK
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"

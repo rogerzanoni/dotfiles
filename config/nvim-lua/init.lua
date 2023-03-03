@@ -23,6 +23,21 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'RRethy/vim-illuminate' -- highlight words
+  use 'ntpeters/vim-better-whitespace'  -- highlight whitespaces
+  use { -- decorate todo
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end
+  }
+  use {
+    'andymass/vim-matchup',
+    setup = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+  }
 
   -- fuzzy finding
   use {
@@ -45,8 +60,11 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'onsails/lspkind.nvim'
 
+  use 'stevearc/aerial.nvim' -- sidebar
+
   -- show treesitter context
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'haringsrob/nvim_context_vt'
 
   -- use silver searcher on nvim
   use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
@@ -60,8 +78,7 @@ require('packer').startup(function(use)
   }
 
   -- colorscheme
-  -- use { 'bluz71/vim-moonfly-colors', branch = 'cterm-compat' }
-  use {'morhetz/gruvbox'}
+  use { 'wuelnerdotexe/vim-enfocado' }
 
   -- auto detect indenting
   use 'tpope/vim-sleuth'
@@ -113,6 +130,8 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.opt.clipboard = 'unnamedplus'
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -145,7 +164,8 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme enfocado]]
+vim.g.enfocado_style = 'neon'
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -202,11 +222,29 @@ require('gitsigns').setup {
   },
 }
 
+-- aerial
+require('aerial').setup({
+  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+  on_attach = function(bufnr)
+    -- Jump forwards/backwards with '{' and '}'
+    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
+    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
+  end
+})
+-- You probably also want to set a keymap to toggle aerial
+vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'python', 'javascript' },
+
+  matchup = {
+    enable = true,
+  },
+
   highlight = { enable = true, additional_vim_regex_highlighting = false },
   --indent = { enable = true },
   incremental_selection = {
