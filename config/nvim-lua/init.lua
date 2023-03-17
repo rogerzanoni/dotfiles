@@ -66,6 +66,9 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'haringsrob/nvim_context_vt'
 
+  -- insights
+  use 'Freed-Wu/cppinsights.vim'
+
   -- use silver searcher on nvim
   use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
 
