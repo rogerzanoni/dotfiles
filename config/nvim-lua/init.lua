@@ -24,7 +24,11 @@ require('packer').startup(function(use)
   use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'RRethy/vim-illuminate' -- highlight words
-  use 'ntpeters/vim-better-whitespace'  -- highlight whitespaces
+  use 'sheerun/vim-polyglot' -- syntax highlight for multiple languages
+  use 'Glench/Vim-Jinja2-Syntax' -- jinja and other template languages
+  use "lukas-reineke/indent-blankline.nvim"
+  use 'lukoshkin/trailing-whitespace'
+  use 'nacro90/numb.nvim'
   use { -- decorate todo
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -60,7 +64,16 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'onsails/lspkind.nvim'
 
-  use 'stevearc/aerial.nvim' -- sidebar
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+      }
+    end
+  }
+
+  use 'simrat39/symbols-outline.nvim'
 
   -- show treesitter context
   use 'nvim-treesitter/nvim-treesitter-context'
@@ -83,9 +96,6 @@ require('packer').startup(function(use)
   -- colorscheme
   use { 'wuelnerdotexe/vim-enfocado' }
 
-  -- auto detect indenting
-  use 'tpope/vim-sleuth'
-
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
@@ -101,7 +111,12 @@ require('packer').startup(function(use)
     end,
   })
 
+  -- html/css support
   use 'ap/vim-css-color'
+  use 'windwp/nvim-ts-autotag'
+
+  -- tabs
+  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
   if is_bootstrap then
     require('packer').sync()
@@ -148,8 +163,12 @@ vim.o.mouse = 'a'
 vim.o.breakindent = true
 
 -- indenting
-vim.o.autoindent = true
-vim.o.smartindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -179,6 +198,17 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
+vim.opt.list = true
+vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "eol:↴"
+vim.g.indent_blankline_char = "",
+
+require("indent_blankline").setup {
+    show_end_of_line = true,
+}
+
+require('numb').setup()
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -225,26 +255,21 @@ require('gitsigns').setup {
   },
 }
 
--- aerial
-require('aerial').setup({
-  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
-  on_attach = function(bufnr)
-    -- Jump forwards/backwards with '{' and '}'
-    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
-    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
-  end
-})
--- You probably also want to set a keymap to toggle aerial
-vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+require("symbols-outline").setup()
 
+require('nvim-ts-autotag').setup()
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'python', 'javascript' },
+  ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'meson', 'python', 'javascript', 'json', 'html', 'rust', 'yaml', 'markdown' },
 
   matchup = {
+    enable = true,
+  },
+
+  autotag = {
     enable = true,
   },
 
@@ -393,7 +418,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'bashls', 'jsonls', 'cssls', 'html', 'tsserver' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'bashls', 'jsonls', 'html' }
 
 -- Ensure the servers above are installed
 require('nvim-lsp-installer').setup {
