@@ -82,9 +82,6 @@ require('packer').startup(function(use)
   -- insights
   use 'Freed-Wu/cppinsights.vim'
 
-  -- use silver searcher on nvim
-  use({ "kelly-lin/telescope-ag", requires = { { "nvim-telescope/telescope.nvim" } } })
-
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
@@ -94,7 +91,7 @@ require('packer').startup(function(use)
   }
 
   -- colorscheme
-  use { 'wuelnerdotexe/vim-enfocado' }
+  use { "folke/tokyonight.nvim" }
 
   use {
     "windwp/nvim-autopairs",
@@ -186,7 +183,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme enfocado]]
+vim.cmd [[colorscheme tokyonight-night]]
 vim.g.enfocado_style = 'neon'
 
 -- Set completeopt to have a better completion experience
@@ -471,7 +468,6 @@ telescope.setup {
   }
 }
 
-telescope.load_extension('ag')
 telescope.load_extension('fzf')
 
 map('n', '<leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
@@ -480,8 +476,7 @@ map('n', '<leader>b', ':Telescope buffers<CR>', { noremap = true, silent = true 
 map('n', '<leader>l', ':Telescope jumplist<CR>', { noremap = true, silent = true })
 map('n', '<leader>h', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
 map('n', '<leader>y', ':Telescope current_buffer_fuzzy_find<CR>', { noremap = true, silent = true })
-
-map('n', '<leader>s', ':Ag<Space>', { noremap = true })
+map('n', '<leader>s', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
 -- cmp setup
 local cmp = require 'cmp'
