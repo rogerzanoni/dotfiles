@@ -36,14 +36,7 @@ require('packer').startup(function(use)
       require("todo-comments").setup {}
     end
   }
-  use {
-    'andymass/vim-matchup',
-    setup = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end
-  }
-
-  -- fuzzy finding
+ -- fuzzy finding
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or                            , branch = '0.1.x',
@@ -54,6 +47,12 @@ require('packer').startup(function(use)
   -- snippets
   use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
   use "rafamadriz/friendly-snippets"
+
+  -- calendar management
+  use 'mattn/calendar-vim'
+
+  -- note taking
+  use 'renerocksai/telekasten.nvim'
 
   -- Autocomplete/lsp
   use 'hrsh7th/cmp-nvim-lsp'
@@ -262,10 +261,6 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'meson', 'python', 'javascript', 'json', 'html', 'rust', 'yaml', 'markdown' },
 
-  matchup = {
-    enable = true,
-  },
-
   autotag = {
     enable = true,
   },
@@ -325,6 +320,11 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+-- notetaking
+require('telekasten').setup({
+  home = vim.fn.expand("~/Dropbox/notes"), -- Put the name of your notes directory here
+})
 
 -- tresitter context setup
 require 'treesitter-context'.setup {
