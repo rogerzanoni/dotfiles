@@ -38,8 +38,7 @@ require('packer').startup(function(use)
   }
  -- fuzzy finding
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
+    'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -371,10 +370,10 @@ require 'treesitter-context'.setup {
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>q', ':TroubleToggle<cr>', { silent = true })
 
 -- LSP settings.
---  This function gets run when an LSP connects to a particular buffer.
+-- This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -391,6 +390,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+
   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
@@ -445,6 +445,13 @@ for _, lsp in ipairs(servers) do
   ::continue::
 end
 
+-- disable inline diagn
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    }
+)
+
 map('n', '<leader>i', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
 
 -- telescope setup
@@ -477,6 +484,17 @@ map('n', '<leader>l', ':Telescope jumplist<CR>', { noremap = true, silent = true
 map('n', '<leader>h', ':Telescope oldfiles<CR>', { noremap = true, silent = true })
 map('n', '<leader>y', ':Telescope current_buffer_fuzzy_find<CR>', { noremap = true, silent = true })
 map('n', '<leader>s', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+
+
+map('n', '<leader>tt', ':Telekasten show_tags<CR>', { noremap = true, silent = true })
+map('n', '<leader>tn', ':Telekasten new_note<CR>', { noremap = true, silent = true })
+map('n', '<leader>tw', ':Telekasten goto_thisweek<CR>', { noremap = true, silent = true })
+map('n', '<leader>to', ':Telekasten goto_today<CR>', { noremap = true, silent = true })
+map('n', '<leader>tc', ':Telekasten show_calendar<CR>', { noremap = true, silent = true })
+map('n', '<leader>ti', ':Telekasten insert_link<CR>', { noremap = true, silent = true })
+map('n', '<leader>tr', ':Telekasten rename_note<CR>', { noremap = true, silent = true })
+map('n', '<leader>tp', ':Telekasten panel<CR>', { noremap = true, silent = true })
+map('n', '<leader><enter>', ':Telekasten follow_link<CR>', { noremap = true, silent = true })
 
 -- cmp setup
 local cmp = require 'cmp'
