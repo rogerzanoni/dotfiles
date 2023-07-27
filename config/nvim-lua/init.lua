@@ -4,7 +4,6 @@ local is_bootstrap = false
 local fn = vim.fn
 local g = vim.g
 local map = vim.api.nvim_set_keymap
-local cmd = vim.cmd
 
 -- Install packer
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -16,8 +15,10 @@ end
 -- stylua: ignore start
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
-  use 'tpope/vim-fugitive' -- Git commands in nvim
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
+
+  use { 'lewis6991/gitsigns.nvim' }
+  use { 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use "sindrets/diffview.nvim" 
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'nvim-treesitter/nvim-treesitter' -- Highlight, edit, and navigate code
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -36,6 +37,14 @@ require('packer').startup(function(use)
       require("todo-comments").setup {}
     end
   }
+
+  use({
+    "utilyre/sentiment.nvim",
+    tag = "*",
+    config = function()
+      require("sentiment").setup({})
+    end,
+  })
  -- fuzzy finding
   use {
     'nvim-telescope/telescope.nvim',
@@ -50,9 +59,6 @@ require('packer').startup(function(use)
   -- calendar management
   use 'mattn/calendar-vim'
 
-  -- note taking
-  use 'renerocksai/telekasten.nvim'
-
   -- Autocomplete/lsp
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -61,6 +67,8 @@ require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'onsails/lspkind.nvim'
+
+  use 'VidocqH/lsp-lens.nvim'
 
   use {
     "folke/trouble.nvim",
@@ -72,10 +80,6 @@ require('packer').startup(function(use)
   }
 
   use 'simrat39/symbols-outline.nvim'
-
-  -- show treesitter context
-  use 'nvim-treesitter/nvim-treesitter-context'
-  use 'haringsrob/nvim_context_vt'
 
   -- insights
   use 'Freed-Wu/cppinsights.vim'
@@ -89,22 +93,12 @@ require('packer').startup(function(use)
   }
 
   -- colorscheme
-  use { "folke/tokyonight.nvim" }
+  use "rebelot/kanagawa.nvim"
 
   use {
-    "windwp/nvim-autopairs",
+    'windwp/nvim-autopairs',
     config = function() require("nvim-autopairs").setup {} end
   }
-
-  -- session management
-  use({
-    "olimorris/persisted.nvim",
-    --module = "persisted", -- For lazy loading
-    config = function()
-      require("persisted").setup()
-      require("telescope").load_extension("persisted") -- To load the telescope extension
-    end,
-  })
 
   -- html/css support
   use 'ap/vim-css-color'
@@ -112,6 +106,24 @@ require('packer').startup(function(use)
 
   -- tabs
   use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+
+  -- zen mode
+  use 'folke/zen-mode.nvim'
+
+  -- markdown preview
+  use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
+
+  -- paste buffer to sharing services
+  use { 'rktjmp/paperplanes.nvim' }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {}
+    end
+  }
 
   if is_bootstrap then
     require('packer').sync()
@@ -181,8 +193,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme tokyonight-night]]
-vim.g.enfocado_style = 'neon'
+vim.cmd [[colorscheme kanagawa]]
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
@@ -201,6 +212,7 @@ vim.g.indent_blankline_char = "",
 
 require("indent_blankline").setup {
     show_end_of_line = true,
+    show_current_context = true,
 }
 
 require('numb').setup()
@@ -235,11 +247,9 @@ require('lualine').setup {
   },
 }
 
--- Enable Comment.nvim
-require('Comment').setup()
+-- Git
 
--- Gitsigns
--- See `:help gitsigns.txt`
+--- See `:help gitsigns.txt`
 require('gitsigns').setup {
   signs = {
     add = { text = '+' },
@@ -250,15 +260,27 @@ require('gitsigns').setup {
   },
 }
 
+require('neogit').setup()
+
+-- Enable Comment.nvim
+require('Comment').setup()
+
 require("symbols-outline").setup()
 
 require('nvim-ts-autotag').setup()
+
+require("paperplanes").setup({
+  register = "+",
+  provider = "0x0.st",
+  provider_options = {},
+  notifier = vim.notify or print,
+})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'meson', 'python', 'javascript', 'json', 'html', 'rust', 'yaml', 'markdown' },
+  ensure_installed = { 'lua', 'cmake', 'css', 'cpp', 'c', 'meson', 'python', 'javascript', 'json', 'html', 'rust', 'yaml', 'markdown', 'norg' },
 
   autotag = {
     enable = true,
@@ -320,52 +342,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- notetaking
-require('telekasten').setup({
-  home = vim.fn.expand("~/Dropbox/notes"), -- Put the name of your notes directory here
-})
-
--- tresitter context setup
-require 'treesitter-context'.setup {
-  enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-  trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-  patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-    -- For all filetypes
-    -- Note that setting an entry here replaces all other patterns for this entry.
-    -- By setting the 'default' entry below, you can control which nodes you want to
-    -- appear in the context window.
-    default = {
-      'class',
-      'function',
-      'method',
-      'for',
-      'while',
-      'if',
-      'switch',
-      'case',
-      'namespace',
-    },
-    -- Example for a specific filetype.
-    -- If a pattern is missing, *open a PR* so everyone can benefit.
-    --   rust = {
-    --       'impl_item',
-    --   },
-  },
-  exact_patterns = {
-    -- Example for a specific filetype with Lua patterns
-    -- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-    -- exactly match "impl_item" only)
-    -- rust = true,
-  },
-
-  -- [!] The options below are exposed but shouldn't require your attention,
-  --     you can safely ignore them.
-
-  zindex = 20, -- The Z-index of the context window
-  mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
-}
-
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -425,6 +401,24 @@ require('nvim-lsp-installer').setup {
 local lspconfig = require 'lspconfig'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+capabilities.textDocument.completion.completionItem = {
+  documentationFormat = { "markdown", "plaintext" },
+  snippetSupport = true,
+  preselectSupport = true,
+  insertReplaceSupport = true,
+  labelDetailsSupport = true,
+  deprecatedSupport = true,
+  commitCharactersSupport = true,
+  tagSupport = { valueSet = { 1 } },
+  resolveSupport = {
+    properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+    },
+  },
+}
+
 for _, lsp in ipairs(servers) do
   if lsp == 'clangd' then
     lspconfig.clangd.setup {
@@ -454,6 +448,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 map('n', '<leader>i', ':ClangdSwitchSourceHeader<CR>', { noremap = true, silent = true })
 
+require'lsp-lens'.setup({})
+
 -- telescope setup
 local telescope = require('telescope')
 telescope.setup {
@@ -465,6 +461,7 @@ telescope.setup {
       theme = "dropdown",
     }
   },
+  color_devicons = true,
   extensions = {
     fzf = {
       fuzzy = true,
@@ -485,16 +482,8 @@ map('n', '<leader>h', ':Telescope oldfiles<CR>', { noremap = true, silent = true
 map('n', '<leader>y', ':Telescope current_buffer_fuzzy_find<CR>', { noremap = true, silent = true })
 map('n', '<leader>s', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 
-
-map('n', '<leader>tt', ':Telekasten show_tags<CR>', { noremap = true, silent = true })
-map('n', '<leader>tn', ':Telekasten new_note<CR>', { noremap = true, silent = true })
-map('n', '<leader>tw', ':Telekasten goto_thisweek<CR>', { noremap = true, silent = true })
-map('n', '<leader>to', ':Telekasten goto_today<CR>', { noremap = true, silent = true })
-map('n', '<leader>tc', ':Telekasten show_calendar<CR>', { noremap = true, silent = true })
-map('n', '<leader>ti', ':Telekasten insert_link<CR>', { noremap = true, silent = true })
-map('n', '<leader>tr', ':Telekasten rename_note<CR>', { noremap = true, silent = true })
-map('n', '<leader>tp', ':Telekasten panel<CR>', { noremap = true, silent = true })
-map('n', '<leader><enter>', ':Telekasten follow_link<CR>', { noremap = true, silent = true })
+map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', { noremap = true, silent = true })
+map('n', '<A-.>', '<Cmd>BufferNext<CR>', { noremap = true, silent = true })
 
 -- cmp setup
 local cmp = require 'cmp'
@@ -515,7 +504,7 @@ cmp.setup({
     },
     completeopt = 'menu,menuone,noselect',
     keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-    keyword_length = 2,
+    winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
   },
   formatting = {
     format = function(entry, vim_item)
