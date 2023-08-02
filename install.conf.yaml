@@ -14,36 +14,6 @@
       stderr: true
       description: "Installing base packages (dev, sway)"
     -
-      command: ./install-ohmyzsh
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Installing oh-my-zsh"
-    -
-      command: ./install-spaceshiptheme
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Installing oh-my-zsh theme"
-    -
-      command: ./install-zsh-highlight
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Installing zsh syntax highlighting plugin"
-    -
-      command: ./install-zsh-autocompl
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Installing zsh autosuggestions plugin"
-    -
-      command: ./install-dein
-      stdout: true
-      stderr: true
-      stdin: true
-      description: "Installing dein"
-    -
       command: ./install-kitty-themes
       stdout: true
       stderr: true
@@ -61,7 +31,7 @@
     ~/.config/waybar/style.css: config/sway/waybar/style.css
 
     # nvim
-    ~/.config/nvim: config/nvim-lua
+    ~/.config/nvim: config/nvim
 
     # X
     ~/.xinitrc: config/x/xinitrc

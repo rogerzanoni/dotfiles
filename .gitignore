@@ -10,3 +10,5 @@ recentf*
 semanticdb
 smex-items
 config/nvim-lua/plugin/
+.luarc.json
+lazy-lock.json
