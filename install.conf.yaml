@@ -5,20 +5,6 @@
 
 - clean: ['~']
 
-- shell:
-    -
-      command: mkdir ~/bin; mkdir -p ~/.config/nvim ; mkdir -p ~/.config/sway ; mkdir -p ~/.config/waybar ; mkdir -p ~/.config/dunst
-    -
-      command: sudo pacman -S --noconfirm --needed gcc make binutils fakeroot gdb vim neovim networkmanager network-manager-applet blueman feh xorg-server xorg-xinit xterm curl zsh openssh tig clang alsa-utils blueman ctags curl pkgconf python-neovim ttf-font-awesome sysstat pyenv browserpass-chromium sway waybar kitty
-      stdout: true
-      stderr: true
-      description: "Installing base packages (dev, sway)"
-    -
-      command: ./install-kitty-themes
-      stdout: true
-      stderr: true
-      description: "Install kitty themes"
-
 - link:
     ~/.dotfiles: ''
 
