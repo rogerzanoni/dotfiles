@@ -93,9 +93,6 @@ return {
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       require("lspconfig")["rust_analyzer"].setup({on_attach = on_attach, capabilities = capabilities,})
-      require("lspconfig")["bashls"].setup({on_attach = on_attach, capabilities = capabilities,})
-      require("lspconfig")["jsonls"].setup({on_attach = on_attach, capabilities = capabilities,})
-      require("lspconfig")["html"].setup({on_attach = on_attach, capabilities = capabilities,})
 
       -- Lua
       require("lspconfig")["lua_ls"].setup({
