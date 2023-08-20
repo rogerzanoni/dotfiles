@@ -1,0 +1,11 @@
+[Unit]
+Description=Silverbullet service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/projects/github/silverbullet
+ExecStart=/usr/bin/deno task watch-server %h/Dropbox/notes
+
+[Install]
+WantedBy=default.target
