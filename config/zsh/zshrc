@@ -55,6 +55,8 @@ eval "$(pyenv virtualenv-init -)"
 
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
+export PG_OF_PATH=/home/zanoni/projects/github/openFrameworks
+
 # enable vi mode
 bindkey -v
 
