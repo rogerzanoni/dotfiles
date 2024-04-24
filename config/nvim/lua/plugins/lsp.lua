@@ -5,10 +5,11 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "j-hui/fidget.nvim",
+      {"j-hui/fidget.nvim", tag="legacy",},
       "folke/neodev.nvim",
       "RRethy/vim-illuminate",
       "hrsh7th/cmp-nvim-lsp",
+      "lukas-reineke/cmp-under-comparator",
     },
     config = function()
       -- Set up Mason before anything else

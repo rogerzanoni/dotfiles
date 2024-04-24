@@ -1,40 +1,36 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+source /usr/share/zsh/scripts/zplug/init.zsh
 
-source /usr/share/zsh/share/antigen.zsh
+export ZOXIDE_CMD_OVERRIDE=cd
 
-antigen use oh-my-zsh
+zplug "willghatch/zsh-saneopt"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug "junegunn/fzf", use:"shell/*.zsh"
+zplug "marlonrichert/zsh-autocomplete"
+zplug "MichaelAquilina/zsh-auto-notify"
+zplug "cal2195/q"
+zplug "mafredri/zsh-async"
+zplug "djui/alias-tips"
+zplug "voronkovich/gitignore.plugin.zsh"
+zplug "aubreypwd/zsh-plugin-download"
+zplug "amyreese/zsh-take"
+zplug "MohamedElashri/exa-zsh"
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/ssh-agent", from:oh-my-zsh
+zplug "plugins/zoxide", from:oh-my-zsh
+zplug "themes/alanpeabody", from:oh-my-zsh
 
-antigen theme romkatv/powerlevel10k
+zplug load
 
-antigen bundle git
-antigen bundle archlinux
-antigen bundle fd
-antigen bundle fzf
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle colored-man-pages
-antigen bundle ripgrep
-antigen bundle ssh-agent
-antigen bundle vi-mode
-antigen bundle zoxide
-
-antigen apply
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+export HISTFILE=~/.zsh_history
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE
 
 alias nv='nvim'
 export EDITOR='nvim'
-
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
@@ -43,11 +39,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-if [ "$DESKTOP_SESSION" = "/usr/share/wayland-sessions/sway" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
@@ -55,10 +46,11 @@ eval "$(pyenv virtualenv-init -)"
 
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-export PG_OF_PATH=/home/zanoni/projects/github/openFrameworks
-
 # enable vi mode
 bindkey -v
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/zanoni/projects/google/google-cloud-sdk/path.zsh.inc' ]; then . '/home/zanoni/projects/google/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/zanoni/projects/google/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/zanoni/projects/google/google-cloud-sdk/completion.zsh.inc'; fi

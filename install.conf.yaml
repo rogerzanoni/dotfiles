@@ -5,33 +5,32 @@
 
 - clean: ['~']
 
+- create:
+    - ~/.config/alacritty
+    - ~/.config/sway
+    - ~/.config/sirula
+
 - link:
     ~/.dotfiles: ''
 
     # git
     ~/.gitignore: config/git/gitignore
 
+    # alacritty
+    ~/.config/alacritty/alacritty.yml: config/alacritty/alacritty.yml
+
     # sway
-    # ~/.config/sway/config: config/sway/config
-    # ~/.config/waybar/config: config/sway/waybar/config
-    # ~/.config/waybar/style.css: config/sway/waybar/style.css
+    ~/.config/sway/config: config/sway/config
+    ~/.config/sirula/config.toml: config/sway/sirula/config.toml
+    ~/.config/sirula/style.css: config/sway/sirula/style.css
 
     # nvim
     ~/.config/nvim: config/nvim
-
-    # X
-    # ~/.xinitrc: config/x/xinitrc
-    # ~/.Xresources: config/x/Xresources
 
     # zsh
     ~/.zshrc: config/zsh/zshrc
     ~/.zshenv: config/zsh/zshenv
     ~/.zprofile: config/zsh/zprofile
 
-    # dunst
-    # ~/.config/dunst/dunstrc: config/dunstrc
-
     # kitty
     ~/.config/kitty/kitty.conf: config/kitty/kitty.conf
-
-    ~/.config/systemd/user/silverbullet.service: config/silverbullet/service
