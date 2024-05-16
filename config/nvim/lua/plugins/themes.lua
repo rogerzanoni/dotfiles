@@ -1,6 +1,6 @@
 -- Themes
 return {
-  "rebelot/kanagawa.nvim",
+  "rafamadriz/neon",
 
   {
     "catppuccin/nvim",
