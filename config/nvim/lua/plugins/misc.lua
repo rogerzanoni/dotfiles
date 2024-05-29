@@ -110,12 +110,14 @@ return {
     end,
   },
   {
-    's1n7ax/nvim-window-picker',
-    name = 'window-picker',
-    event = 'VeryLazy',
-    version = '2.*',
-    config = function()
-        require'window-picker'.setup()
-    end,
+    "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {
+    }
+  },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    opts = {
+      -- add any custom options here
+    }
   }
 }
