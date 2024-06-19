@@ -81,3 +81,6 @@ map("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<c
 
 -- stop Persistence => session won't be saved on exit
 map("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], "Stop recording the current session")
+
+-- workaround, vim is exiting when I press ; in normal mode
+map("n", ";", ":")
