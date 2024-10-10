@@ -6,28 +6,25 @@ export ZOXIDE_CMD_OVERRIDE=cd
 zplug "willghatch/zsh-saneopt"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
 zplug "junegunn/fzf", use:"shell/*.zsh"
 zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "marlonrichert/zsh-autocomplete"
-zplug "MichaelAquilina/zsh-auto-notify"
 zplug "cal2195/q"
 zplug "mafredri/zsh-async"
 zplug "djui/alias-tips"
 zplug "voronkovich/gitignore.plugin.zsh"
 zplug "aubreypwd/zsh-plugin-download"
-zplug "amyreese/zsh-take"
-zplug "MohamedElashri/exa-zsh"
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/ssh-agent", from:oh-my-zsh
-zplug "plugins/zoxide", from:oh-my-zsh
-zplug "themes/alanpeabody", from:oh-my-zsh
+
+zplug "dracula/zsh", as:theme
 
 zplug load
 
 export HISTFILE=~/.zsh_history
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
+
+export DRACULA_DISPLAY_GIT=0
 
 alias nv='nvim'
 export EDITOR='nvim'
