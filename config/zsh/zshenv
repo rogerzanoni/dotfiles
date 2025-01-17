@@ -1,9 +1,9 @@
 export GOPATH=$HOME/go
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/vendor_perl:/usr/bin/core_perl:/opt/qt/bin:/opt/android-sdk/platform-tools/:/opt/android-sdk/tools/:/opt/phabricator/arcanist/bin:~/bin:~/.cargo/bin:$GOPATH/bin:$HOME/.rbenv/shims
+export PATH=$(realpath ~/.cargo/bin):$(realpath ~/bin):$GOPATH/bin:$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/vendor_perl:/usr/bin/core_perl
 
-NPM_PACKAGES="${HOME}/.npm-packages"
-export PATH="$PATH:$NPM_PACKAGES/bin"
+export NPM_CONFIG_PREFIX=$HOME/.local/
+export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

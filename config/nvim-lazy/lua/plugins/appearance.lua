@@ -1,13 +1,9 @@
 return {
-  { "ellisonleao/gruvbox.nvim" },
-  {
-    "navarasu/onedark.nvim",
-    name = "onedark",
-  },
+  { "scottmckendry/cyberdream.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "tokyonight-night",
     },
   },
 }

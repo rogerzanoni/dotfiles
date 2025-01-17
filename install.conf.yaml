@@ -25,7 +25,7 @@
     ~/.config/sirula/style.css: config/sway/sirula/style.css
 
     # nvim
-    ~/.config/nvim: config/nvim
+    ~/.config/nvim: config/nvim-lazy
 
     # zsh
     ~/.zshrc: config/zsh/zshrc
